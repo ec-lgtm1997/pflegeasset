@@ -1,17 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  pickSessionQuestions,
-  type Difficulty,
+  getCases,
+  pickSessionByCases,
   type Question,
 } from "@/data/questions";
 import type { SelfRating, SessionResult } from "@/lib/assessment-types";
 import { StartScreen } from "@/components/assessment/StartScreen";
 import { ProgressBar } from "@/components/assessment/ProgressBar";
-import { EasyQuestionView } from "@/components/assessment/EasyQuestionView";
 import { OpenQuestionView } from "@/components/assessment/OpenQuestionView";
 import { ResultsScreen } from "@/components/assessment/ResultsScreen";
+import { ArrowLeft, FileText } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Minimalistische Prüfungssimulation für Pflege und Medizin. Multiple-Choice, offene Fragen und OSCE-Fallbeispiele mit Selbstbewertung.",
+          "Minimalistische Prüfungssimulation für Pflege und Medizin. Fallbasierte OSCE-Fragen mit Musterlösung und Selbstbewertung.",
       },
     ],
   }),
@@ -28,23 +28,52 @@ export const Route = createFileRoute("/")({
 });
 
 type Phase = "start" | "session" | "results";
-type CountOption = 3 | 5 | 10 | "all";
 
 function Index() {
   const [phase, setPhase] = useState<Phase>("start");
-  const [difficulty, setDifficulty] = useState<Difficulty | null>(null);
-  const [count, setCount] = useState<CountOption>(5);
+  const [selectedCases, setSelectedCases] = useState<Set<string>>(new Set());
   const [questions, setQuestions] = useState<Question[]>([]);
   const [index, setIndex] = useState(0);
   const [results, setResults] = useState<SessionResult[]>([]);
-  const pendingResult = useRef<SessionResult | null>(null);
 
+  const allCases = useMemo(() => getCases(), []);
   const total = questions.length;
   const current = questions[index];
 
+  // Fall-Info für aktuelle Frage finden
+  const currentCase = useMemo(() => {
+    if (!current) return null;
+    return allCases.find((c) => c.caseId === current.caseId) ?? null;
+  }, [current, allCases]);
+
+  // Position der Frage innerhalb des aktuellen Falls
+  const caseProgress = useMemo(() => {
+    if (!current || !currentCase) return null;
+    const localIndex = currentCase.questions.findIndex(
+      (q) => q.id === current.id,
+    );
+    return {
+      current: localIndex + 1,
+      total: currentCase.questions.length,
+    };
+  }, [current, currentCase]);
+
+  const toggleCase = (caseId: string) => {
+    setSelectedCases((prev) => {
+      const next = new Set(prev);
+      if (next.has(caseId)) next.delete(caseId);
+      else next.add(caseId);
+      return next;
+    });
+  };
+
+  const handleSelectAll = () =>
+    setSelectedCases(new Set(allCases.map((c) => c.caseId)));
+  const handleSelectNone = () => setSelectedCases(new Set());
+
   const handleStart = () => {
-    if (!difficulty) return;
-    const session = pickSessionQuestions(difficulty, count);
+    if (selectedCases.size === 0) return;
+    const session = pickSessionByCases(Array.from(selectedCases));
     if (session.length === 0) return;
     setQuestions(session);
     setIndex(0);
@@ -52,34 +81,14 @@ function Index() {
     setPhase("session");
   };
 
-  const advance = (result: SessionResult) => {
-    const nextResults = [...results, result];
-    setResults(nextResults);
+  const handleRate = (rating: SelfRating) => {
+    const next = [...results, { kind: "open" as const, rating }];
+    setResults(next);
     if (index + 1 >= total) {
-      // tiny delay so the user sees the feedback for open mode
       setTimeout(() => setPhase("results"), 180);
     } else {
       setIndex(index + 1);
     }
-  };
-
-  const handleEasyAnswer = (correct: boolean) => {
-    // store, but stay on screen until user clicks "Weiter"
-    pendingResult.current = { kind: "easy", correct };
-  };
-
-  
-
-  const handleEasyNext = () => {
-    if (pendingResult.current) {
-      const r = pendingResult.current;
-      pendingResult.current = null;
-      advance(r);
-    }
-  };
-
-  const handleRate = (rating: SelfRating) => {
-    advance({ kind: "open", rating });
   };
 
   const handleRestart = () => {
@@ -87,6 +96,18 @@ function Index() {
     setQuestions([]);
     setIndex(0);
     setResults([]);
+  };
+
+  const handleBackToStart = () => {
+    if (
+      results.length > 0 &&
+      !window.confirm(
+        "Session wirklich abbrechen? Dein bisheriger Fortschritt geht verloren.",
+      )
+    ) {
+      return;
+    }
+    handleRestart();
   };
 
   return (
@@ -101,46 +122,83 @@ function Index() {
             transition={{ duration: 0.35 }}
           >
             <StartScreen
-              difficulty={difficulty}
-              count={count}
-              onSelectDifficulty={setDifficulty}
-              onSelectCount={setCount}
+              selected={selectedCases}
+              onToggle={toggleCase}
+              onSelectAll={handleSelectAll}
+              onSelectNone={handleSelectNone}
               onStart={handleStart}
             />
           </motion.div>
         )}
 
-        {phase === "session" && current && (
+        {phase === "session" && current && currentCase && (
           <motion.div
-            key={`q-${index}`}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto w-full max-w-3xl px-6 py-12"
+            key="session"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.35 }}
+            className="mx-auto w-full max-w-3xl px-6 py-10"
           >
-            <div className="mb-10">
+            {/* Zurück-Button */}
+            <div className="mb-6">
+              <button
+                onClick={handleBackToStart}
+                className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              >
+                <ArrowLeft className="h-3.5 w-3.5" />
+                Zurück zur Startseite
+              </button>
+            </div>
+
+            {/* Fortschritt */}
+            <div className="mb-8">
               <ProgressBar current={index + 1} total={total} />
             </div>
 
-            {current.difficulty === "leicht" ? (
-              <EasyQuestionView
+            {/* Fallbeschreibung (pinned, animiert beim Fallwechsel) */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentCase.caseId}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="mb-8 rounded-2xl border border-border bg-card p-6"
+              >
+                <div className="mb-2 flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                    <FileText className="h-3.5 w-3.5" />
+                    Klinisches Fallbeispiel
+                  </div>
+                  {caseProgress && caseProgress.total > 1 && (
+                    <div className="font-mono text-[0.7rem] tabular-nums uppercase tracking-wider text-muted-foreground">
+                      Frage {caseProgress.current} / {caseProgress.total}
+                    </div>
+                  )}
+                </div>
+                <p className="whitespace-pre-line text-[0.95rem] leading-relaxed text-foreground">
+                  {currentCase.caseDescription}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Frage */}
+            <AnimatePresence mode="wait">
+              <motion.div
                 key={current.id}
-                question={current}
-                onAnswer={handleEasyAnswer}
-                onNext={handleEasyNext}
-              />
-            ) : (
-              <OpenQuestionView
-                key={current.id}
-                question={current}
-                onRate={handleRate}
-              />
-            )}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <OpenQuestionView question={current} onRate={handleRate} />
+              </motion.div>
+            </AnimatePresence>
           </motion.div>
         )}
 
-        {phase === "results" && difficulty && (
+        {phase === "results" && (
           <motion.div
             key="results"
             initial={{ opacity: 0 }}
@@ -148,18 +206,13 @@ function Index() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <ResultsScreen
-              results={results}
-              difficulty={difficulty}
-              onRestart={handleRestart}
-            />
+            <ResultsScreen results={results} onRestart={handleRestart} />
           </motion.div>
         )}
       </AnimatePresence>
     </main>
   );
 }
-
 
 function BackgroundGlow() {
   return (
