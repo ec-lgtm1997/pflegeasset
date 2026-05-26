@@ -37,6 +37,7 @@ function Index() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [index, setIndex] = useState(0);
   const [results, setResults] = useState<SessionResult[]>([]);
+  const pendingResult = useRef<SessionResult | null>(null);
 
   const total = questions.length;
   const current = questions[index];
