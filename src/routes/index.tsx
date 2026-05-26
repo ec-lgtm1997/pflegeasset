@@ -68,7 +68,7 @@ function Index() {
     pendingResult.current = { kind: "easy", correct };
   };
 
-  const pendingResult = useMemoRef<SessionResult | null>(null);
+  
 
   const handleEasyNext = () => {
     if (pendingResult.current) {
