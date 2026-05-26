@@ -1,23 +1,25 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import type { MediumQuestion, HardQuestion } from "@/data/questions";
+import type { HardQuestion } from "@/data/questions";
 import type { SelfRating } from "@/lib/assessment-types";
-import { ChevronDown, FileText } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 interface Props {
-  question: MediumQuestion | HardQuestion;
+  question: HardQuestion;
   onRate: (rating: SelfRating) => void;
 }
 
 const RATINGS: {
   id: SelfRating;
   label: string;
+  points: string;
   classes: string;
   dot: string;
 }[] = [
   {
     id: "full",
     label: "Vollständig gewusst",
+    points: "1 Pkt",
     classes:
       "border-success/40 hover:border-success/70 hover:bg-success-soft text-foreground",
     dot: "bg-success",
@@ -25,6 +27,7 @@ const RATINGS: {
   {
     id: "partial",
     label: "Teilweise gewusst",
+    points: "0,5 Pkt",
     classes:
       "border-warning/40 hover:border-warning/70 hover:bg-warning-soft text-foreground",
     dot: "bg-warning",
@@ -32,6 +35,7 @@ const RATINGS: {
   {
     id: "none",
     label: "Nicht gewusst",
+    points: "0 Pkt",
     classes:
       "border-destructive/40 hover:border-destructive/70 hover:bg-destructive-soft text-foreground",
     dot: "bg-destructive",
@@ -41,26 +45,9 @@ const RATINGS: {
 export function OpenQuestionView({ question, onRate }: Props) {
   const [answer, setAnswer] = useState("");
   const [revealed, setRevealed] = useState(false);
-  const isHard = question.difficulty === "schwer";
 
   return (
     <div>
-      {isHard && (
-        <motion.div
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 rounded-2xl border border-border bg-card p-6"
-        >
-          <div className="mb-2 flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            <FileText className="h-3.5 w-3.5" />
-            Klinisches Fallbeispiel
-          </div>
-          <p className="whitespace-pre-line text-[0.95rem] leading-relaxed text-foreground">
-            {(question as HardQuestion).caseDescription}
-          </p>
-        </motion.div>
-      )}
-
       <h2 className="text-balance text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-3xl">
         {question.question}
       </h2>
@@ -124,10 +111,15 @@ export function OpenQuestionView({ question, onRate }: Props) {
                     onClick={() => onRate(r.id)}
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`flex items-center gap-3 rounded-xl border bg-card px-4 py-3.5 text-sm font-medium transition-all ${r.classes}`}
+                    className={`flex items-center justify-between gap-3 rounded-xl border bg-card px-4 py-3.5 text-sm font-medium transition-all ${r.classes}`}
                   >
-                    <span className={`h-2 w-2 rounded-full ${r.dot}`} />
-                    {r.label}
+                    <span className="flex items-center gap-3">
+                      <span className={`h-2 w-2 rounded-full ${r.dot}`} />
+                      {r.label}
+                    </span>
+                    <span className="font-mono text-[0.7rem] tabular-nums text-muted-foreground">
+                      {r.points}
+                    </span>
                   </motion.button>
                 ))}
               </div>

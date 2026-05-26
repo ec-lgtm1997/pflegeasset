@@ -1,93 +1,30 @@
 // ============================================================================
 // PFLEGEASSESSMENT - FRAGEN-DATENBANK
 // ----------------------------------------------------------------------------
-// Diese Datei enthält alle Fragen für die Prüfungssimulation.
-// Schema unten dokumentiert. Neue Fragen einfach im jeweiligen Array ergänzen.
+// Alle Fragen sind fallbasiert (OSCE). Mehrere Fragen können denselben `caseId`
+// teilen — sie gehören dann zum gleichen klinischen Fall.
 // ============================================================================
-
-export type Difficulty = "leicht" | "mittel" | "schwer";
-
-export interface MultipleChoiceOption {
-  id: string;
-  text: string;
-}
-
-export interface EasyQuestion {
-  id: string;
-  difficulty: "leicht";
-  question: string;
-  options: MultipleChoiceOption[];
-  correctOptionId: string;
-  explanation: string;
-}
-
-export interface MediumQuestion {
-  id: string;
-  difficulty: "mittel";
-  question: string;
-  modelAnswer: string;
-}
 
 export interface HardQuestion {
   id: string;
-  caseId: string; // Eindeutige ID zur Zuordnung und Filterung gleicher Fallbeschreibungen
+  caseId: string;
   difficulty: "schwer";
   caseDescription: string;
   question: string;
   modelAnswer: string;
 }
 
-export type Question = EasyQuestion | MediumQuestion | HardQuestion;
+export type Question = HardQuestion;
+
+export interface CaseGroup {
+  caseId: string;
+  caseDescription: string;
+  title: string;
+  questions: HardQuestion[];
+}
 
 // ----------------------------------------------------------------------------
-// LEICHT — Multiple Choice
-// ----------------------------------------------------------------------------
-export const easyQuestions: EasyQuestion[] = [
-  {
-    id: "leicht-001",
-    difficulty: "leicht",
-    question:
-      "Welche drei Faktoren bilden die Virchow-Trias zur Entstehung einer Thrombose?",
-    options: [
-      {
-        id: "a",
-        text: "Hypertonie, Hyperlipidämie, Hyperglykämie",
-      },
-      {
-        id: "b",
-        text: "Endothelschaden, veränderte Blutströmung, veränderte Blutzusammensetzung",
-      },
-      {
-        id: "c",
-        text: "Immobilität, Adipositas, Rauchen",
-      },
-      {
-        id: "d",
-        text: "Entzündung, Infektion, Nekrose",
-      },
-    ],
-    correctOptionId: "b",
-    explanation:
-      "Die Virchow-Trias beschreibt die drei pathophysiologischen Hauptfaktoren der Thromboseentstehung: 1) Endothelschaden (Schädigung der Gefäßwand), 2) veränderte Blutströmung (z. B. Stase durch Immobilität), 3) veränderte Blutzusammensetzung (Hyperkoagulabilität). Sie ist die Grundlage jeder Thromboseprophylaxe.",
-  },
-];
-
-// ----------------------------------------------------------------------------
-// MITTEL — Kurze offene Fragen
-// ----------------------------------------------------------------------------
-export const mediumQuestions: MediumQuestion[] = [
-  {
-    id: "mittel-001",
-    difficulty: "mittel",
-    question:
-      "Was versteht man unter dem Phänomen 'Stops walking when talking' im Rahmen des Sturzassessments?",
-    modelAnswer:
-      "'Stops walking when talking' ist ein einfacher klinischer Test zur Sturzrisiko-Einschätzung nach Lundin-Olsson. Dabei wird der Patient während des Gehens in ein Gespräch verwickelt. Bleibt er stehen, um zu antworten, gilt der Test als positiv. Dies weist auf eine eingeschränkte kognitive und motorische Doppelaufgabenfähigkeit (Dual-Tasking) hin und ist ein signifikanter Prädiktor für ein erhöhtes Sturzrisiko, insbesondere bei geriatrischen Patient:innen.",
-  },
-];
-
-// ----------------------------------------------------------------------------
-// SCHWER / OSCE — Fallbasierte offene Fragen (25 Fragen mit Case-IDs)
+// SCHWER / OSCE — Fallbasierte offene Fragen
 // ----------------------------------------------------------------------------
 export const hardQuestions: HardQuestion[] = [
   {
@@ -398,23 +335,37 @@ export const hardQuestions: HardQuestion[] = [
 // ----------------------------------------------------------------------------
 // Helper
 // ----------------------------------------------------------------------------
-export function getQuestionsByDifficulty(difficulty: Difficulty): Question[] {
-  switch (difficulty) {
-    case "leicht":
-      return easyQuestions;
-    case "mittel":
-      return mediumQuestions;
-    case "schwer":
-      return hardQuestions;
-  }
+
+/** Kurzer Titel aus der Fallbeschreibung – erste sinnvolle Phrase. */
+function deriveTitle(description: string): string {
+  const firstSentence = description.split(/[.!?]\s/)[0] ?? description;
+  const trimmed = firstSentence.replace(/\s+/g, " ").trim();
+  if (trimmed.length <= 70) return trimmed;
+  return trimmed.slice(0, 67).trimEnd() + "…";
 }
 
-export function pickSessionQuestions(
-  difficulty: Difficulty,
-  count: number | "all",
-): Question[] {
-  const pool = getQuestionsByDifficulty(difficulty);
-  const shuffled = [...pool].sort(() => Math.random() - 0.5);
-  if (count === "all") return shuffled;
-  return shuffled.slice(0, Math.min(count, shuffled.length));
+/** Gruppiert alle Fragen nach caseId, in der Reihenfolge ihres Auftretens. */
+export function getCases(): CaseGroup[] {
+  const map = new Map<string, CaseGroup>();
+  for (const q of hardQuestions) {
+    const existing = map.get(q.caseId);
+    if (existing) {
+      existing.questions.push(q);
+    } else {
+      map.set(q.caseId, {
+        caseId: q.caseId,
+        caseDescription: q.caseDescription,
+        title: deriveTitle(q.caseDescription),
+        questions: [q],
+      });
+    }
+  }
+  return Array.from(map.values());
+}
+
+/** Sammelt alle Fragen der ausgewählten Fälle, gruppiert nach Fall. */
+export function pickSessionByCases(caseIds: string[]): Question[] {
+  const cases = getCases();
+  const selected = cases.filter((c) => caseIds.includes(c.caseId));
+  return selected.flatMap((c) => c.questions);
 }

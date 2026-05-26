@@ -1,59 +1,32 @@
+import { useMemo } from "react";
 import { motion } from "framer-motion";
-import type { Difficulty } from "@/data/questions";
-import { getQuestionsByDifficulty } from "@/data/questions";
-import { Stethoscope, BookOpen, Activity, ArrowRight } from "lucide-react";
-
-type CountOption = 3 | 5 | 10 | "all";
+import { getCases } from "@/data/questions";
+import { ArrowRight, Check, FileText } from "lucide-react";
 
 interface Props {
-  difficulty: Difficulty | null;
-  count: CountOption;
-  onSelectDifficulty: (d: Difficulty) => void;
-  onSelectCount: (c: CountOption) => void;
+  selected: Set<string>;
+  onToggle: (caseId: string) => void;
+  onSelectAll: () => void;
+  onSelectNone: () => void;
   onStart: () => void;
 }
 
-const DIFFICULTIES: {
-  id: Difficulty;
-  label: string;
-  sub: string;
-  desc: string;
-  icon: typeof Stethoscope;
-}[] = [
-  {
-    id: "leicht",
-    label: "Leicht",
-    sub: "Multiple-Choice",
-    desc: "Schnelle Wissensabfrage mit vier Antwortoptionen.",
-    icon: BookOpen,
-  },
-  {
-    id: "mittel",
-    label: "Mittel",
-    sub: "Kurze offene Fragen",
-    desc: "Eigene Formulierung, Abgleich mit Musterlösung.",
-    icon: Stethoscope,
-  },
-  {
-    id: "schwer",
-    label: "Schwer",
-    sub: "OSCE — Fallbasiert",
-    desc: "Klinische Szenarien nach strukturiertem Schema.",
-    icon: Activity,
-  },
-];
-
-const COUNTS: CountOption[] = [3, 5, 10, "all"];
-
 export function StartScreen({
-  difficulty,
-  count,
-  onSelectDifficulty,
-  onSelectCount,
+  selected,
+  onToggle,
+  onSelectAll,
+  onSelectNone,
   onStart,
 }: Props) {
-  const available = difficulty ? getQuestionsByDifficulty(difficulty).length : 0;
-  const canStart = difficulty !== null && available > 0;
+  const cases = useMemo(() => getCases(), []);
+  const totalQuestions = useMemo(
+    () =>
+      cases
+        .filter((c) => selected.has(c.caseId))
+        .reduce((acc, c) => acc + c.questions.length, 0),
+    [cases, selected],
+  );
+  const canStart = selected.size > 0;
 
   return (
     <motion.div
@@ -71,49 +44,80 @@ export function StartScreen({
           Prüfungssimulation
         </h1>
         <p className="mx-auto mt-3 max-w-md text-pretty text-base text-muted-foreground">
-          Trainiere strukturiert. Wähle einen Schwierigkeitsgrad und beginne deine Session.
+          Wähle die Fallbeispiele aus, die du trainieren möchtest.
         </p>
       </div>
 
-      {/* Schritt 1 */}
-      <section className="mt-14">
-        <StepLabel index={1} title="Schwierigkeitsgrad" />
-        <div className="mt-4 grid gap-3 sm:grid-cols-3">
-          {DIFFICULTIES.map((d, i) => {
-            const Icon = d.icon;
-            const active = difficulty === d.id;
+      <section className="mt-12">
+        <div className="mb-4 flex items-baseline justify-between gap-3">
+          <div className="flex items-baseline gap-3">
+            <span className="text-xs font-mono tabular-nums text-muted-foreground">
+              01
+            </span>
+            <h2 className="text-sm font-medium tracking-wide text-foreground">
+              Fallbeispiele
+            </h2>
+          </div>
+          <div className="flex items-center gap-2 text-xs">
+            <button
+              onClick={onSelectAll}
+              className="rounded-full px-3 py-1 font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            >
+              Alle
+            </button>
+            <button
+              onClick={onSelectNone}
+              className="rounded-full px-3 py-1 font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            >
+              Keine
+            </button>
+          </div>
+        </div>
+
+        <div className="grid gap-2.5">
+          {cases.map((c, i) => {
+            const active = selected.has(c.caseId);
             return (
               <motion.button
-                key={d.id}
-                onClick={() => onSelectDifficulty(d.id)}
-                initial={{ opacity: 0, y: 10 }}
+                key={c.caseId}
+                onClick={() => onToggle(c.caseId)}
+                initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05 * i, duration: 0.4 }}
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.985 }}
-                className={`group relative flex flex-col items-start rounded-2xl border bg-card p-5 text-left transition-all duration-300 ${
+                transition={{ delay: Math.min(i, 12) * 0.02, duration: 0.3 }}
+                whileHover={{ y: -1 }}
+                whileTap={{ scale: 0.995 }}
+                className={`group relative flex items-start gap-4 rounded-2xl border bg-card p-4 text-left transition-all duration-200 ${
                   active
-                    ? "border-primary/60 shadow-[0_8px_30px_-12px_oklch(0.52_0.13_248/0.35)] ring-1 ring-primary/40"
+                    ? "border-primary/60 shadow-[0_6px_24px_-12px_oklch(0.52_0.13_248/0.35)] ring-1 ring-primary/30"
                     : "border-border hover:border-foreground/15 hover:shadow-sm"
                 }`}
               >
                 <div
-                  className={`mb-4 inline-flex h-9 w-9 items-center justify-center rounded-xl transition-colors ${
+                  className={`mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-md border transition-all ${
                     active
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-muted-foreground group-hover:bg-accent"
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-border bg-background"
                   }`}
                 >
-                  <Icon className="h-4 w-4" strokeWidth={2} />
+                  {active && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
                 </div>
-                <div className="text-base font-semibold text-foreground">
-                  {d.label}
-                </div>
-                <div className="mt-0.5 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                  {d.sub}
-                </div>
-                <div className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {d.desc}
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[0.7rem] font-mono uppercase tracking-wider text-muted-foreground">
+                      Fall {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[0.7rem] font-medium text-muted-foreground">
+                      ·
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-[0.7rem] font-medium text-muted-foreground">
+                      <FileText className="h-3 w-3" />
+                      {c.questions.length} Frage
+                      {c.questions.length === 1 ? "" : "n"}
+                    </span>
+                  </div>
+                  <div className="mt-1 text-sm font-medium leading-snug text-foreground">
+                    {c.title}
+                  </div>
                 </div>
               </motion.button>
             );
@@ -121,44 +125,7 @@ export function StartScreen({
         </div>
       </section>
 
-      {/* Schritt 2 */}
-      <section className="mt-10">
-        <StepLabel index={2} title="Anzahl Fragen" />
-        <div className="mt-4 inline-flex flex-wrap gap-2 rounded-2xl border border-border bg-card p-1.5">
-          {COUNTS.map((c) => {
-            const active = count === c;
-            const label = c === "all" ? "Alle" : String(c);
-            return (
-              <button
-                key={String(c)}
-                onClick={() => onSelectCount(c)}
-                className={`relative rounded-xl px-5 py-2 text-sm font-medium transition-colors ${
-                  active
-                    ? "bg-foreground text-background"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {label}
-              </button>
-            );
-          })}
-        </div>
-        {difficulty && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mt-3 text-xs text-muted-foreground"
-          >
-            {available} Frage{available === 1 ? "" : "n"} im Pool verfügbar
-            {count !== "all" && available < (count as number)
-              ? ` — Session wird auf ${available} begrenzt.`
-              : ""}
-          </motion.p>
-        )}
-      </section>
-
-      {/* Start */}
-      <div className="mt-12 flex justify-center">
+      <div className="mt-10 flex flex-col items-center gap-3">
         <motion.button
           onClick={onStart}
           disabled={!canStart}
@@ -174,20 +141,13 @@ export function StartScreen({
           Simulation starten
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </motion.button>
+        {canStart && (
+          <p className="text-xs text-muted-foreground">
+            {selected.size} Fall{selected.size === 1 ? "" : "ä"}lle ·{" "}
+            {totalQuestions} Frage{totalQuestions === 1 ? "" : "n"}
+          </p>
+        )}
       </div>
     </motion.div>
-  );
-}
-
-function StepLabel({ index, title }: { index: number; title: string }) {
-  return (
-    <div className="flex items-baseline gap-3">
-      <span className="text-xs font-mono tabular-nums text-muted-foreground">
-        0{index}
-      </span>
-      <h2 className="text-sm font-medium tracking-wide text-foreground">
-        {title}
-      </h2>
-    </div>
   );
 }
