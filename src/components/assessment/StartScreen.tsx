@@ -74,7 +74,6 @@ export function StartScreen({
           </div>
         </div>
 
-        {/* Geändertes Grid: Von 1 bis max 4 Spalten nebeneinander */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
           {cases.map((c, i) => {
             const active = selected.has(c.caseId);
@@ -87,7 +86,6 @@ export function StartScreen({
                 transition={{ delay: Math.min(i, 12) * 0.02, duration: 0.3 }}
                 whileHover={{ y: -1 }}
                 whileTap={{ scale: 0.995 }}
-                {/* Auf flex-col geändert, damit Checkbox und Text untereinander stehen */}
                 className={`group relative flex flex-col items-start gap-3 rounded-2xl border bg-card p-4 text-left transition-all duration-200 h-full ${
                   active
                     ? "border-primary/60 shadow-[0_6px_24px_-12px_oklch(0.52_0.13_248/0.35)] ring-1 ring-primary/30"
