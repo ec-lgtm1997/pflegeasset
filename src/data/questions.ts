@@ -364,7 +364,36 @@ export const hardQuestions: HardQuestion[] = [
       "Verknüpfen Sie das Reflexgeschehen funktionell mit den anatomischen Nervenwurzelebenen. Welcher Reflex testet welche spezifische Nervenwurzel, wie dokumentiert sich der pathologische Befund bei einer echten mechanischen Wurzelkompression und welche motorische Gehprobe (z. B. Fersengang) korrespondiert mit welchem neurologischen Defizit?",
     modelAnswer:
       "Reflex- und Wurzelzuordnung:\n- Patellarsehnenreflex (PSR): Korrespondiert funktionell mit der Nervenwurzel L4. Der Kennmuskel ist der M. quadriceps femoris.\n- Achillessehnenreflex (ASR): Korrespondiert funktionell mit der Nervenwurzel S1. Der Kennmuskel ist der M. triceps surae.\n\nPathologischer Befund bei Wurzelkompression: Bei einer echten mechanischen Nervenwurzelkompression (z. B. durch einen Bandscheibenvorfall) zeigt sich der entsprechende Eigenreflex im Seitenvergleich auf der betroffenen Seite abgeschwächt (Hyporeflexie) oder komplett erloschen (Areflexie).\n\nKorrespondierende Gehproben:\n- Fersengang: Ist bei einer Schädigung der Wurzel L5 (Kennmuskel M. tibialis anterior / Fußheber) links oder rechts aufgehoben; der Fuß klatscht auf den Boden.\n- Zehenspitzenstand: Ist bei einer Schädigung der Wurzel S1 (Kennmuskel M. triceps surae / Plantarflexion) auf der betroffenen Seite nicht mehr möglich; der Patient kann das Körpergewicht nicht auf den Vorfuß verlagern."
+  },
+
+  [
+  {
+    "id": "schwer-26",
+    "caseId": "case-23",
+    "difficulty": "schwer",
+    "caseDescription": "Herr Schmidt, 58 Jahre, männlich, Hypertoniker, übergewichtig (BMI 32), wird vom Rettungsdienst eingeliefert. Er berichtet über plötzlich einsetzende starke Brustschmerzen mit Druckgefühl, die in den linken Arm und den Kiefer ausstrahlen. Er schwitzt stark, ist blass und wirkt ängstlich. Die Schmerzen bestehen seit ca. 45 Minuten. Vitalzeichen: RR 160/95 mmHg, Puls 110/min, SpO2 94%, AF 22/min.",
+    "question": "Was ist Ihre Verdachtsdiagnose und welche Sofortmaßnahmen leiten Sie ein?",
+    "modelAnswer": "VERDACHTSDIAGNOSE: Akuter Myokardinfarkt (Herzinfarkt) wahrscheinlich STEMI (ST-Elevation Myocardial Infarction) aufgrund der typischen Symptomatik.\n\nSOFORTMASSNAHMEN (VITAL FLAGS - sofort handeln!):\n1. Notruf / Arzt sofort informieren.\n2. Patient hinlegen, Oberkörper leicht erhöht (30°), Ruhe.\n3. Venösen Zugang legen.\n4. O2-Gabe (bei SpO2 <95%).\n5. Monitoring: EKG anlegen, kontinuierliche RR- und SpO2-Messung.\n6. Nitro nach ärztlicher Anordnung.\n7. Blutabnahme: Troponin, CK-MB, Blutbild, Gerinnung.\n8. Vorbereitung auf Herzkatheter ('Zeit ist Muskel').\n9. Nichts essen/trinken lassen (OP-Vorbereitung)."
+  },
+  {
+    "id": "schwer-27",
+    "caseId": "case-23",
+    "difficulty": "schwer",
+    "caseDescription": "Herr Schmidt, 58 Jahre, männlich, Hypertoniker, übergewichtig (BMI 32), wird vom Rettungsdienst eingeliefert. Er berichtet über plötzlich einsetzende starke Brustschmerzen mit Druckgefühl, die in den linken Arm und den Kiefer ausstrahlen. Er schwitzt stark, ist blass und wirkt ängstlich. Die Schmerzen bestehen seit ca. 45 Minuten. Vitalzeichen: RR 160/95 mmHg, Puls 110/min, SpO2 94%, AF 22/min.",
+    "question": "Was ist der Unterschied zwischen STEMI und NSTEMI?",
+    "modelAnswer": "STEMI (ST-Elevation MI): kompletter Verschluss einer Koronararterie → ST-Streckenhebung im EKG → akuter Notfall, sofortige Revaskularisation (Herzkatheter) notwendig. 'Zeit ist Muskel!'\n\nNSTEMI (Non-ST-Elevation MI): partieller Gefäßverschluss, keine ST-Hebung, evtl. ST-Senkung oder T-Veränderungen. Diagnose über erhöhtes Troponin. Behandlung medikamentös + frühzeitiger Herzkatheter."
+  },
+
+  {
+    "id": "schwer-28",
+    "caseId": "case-23",
+    "difficulty": "schwer",
+    "caseDescription": "Herr Schmidt, 58 Jahre, männlich, Hypertoniker, übergewichtig (BMI 32), wird vom Rettungsdienst eingeliefert. Er berichtet über plötzlich einsetzende starke Brustschmerzen mit Druckgefühl, die in den linken Arm und den Kiefer ausstrahlen. Er schwitzt stark, ist blass und wirkt ängstlich. Die Schmerzen bestehen seit ca. 45 Minuten. Vitalzeichen: RR 160/95 mmHg, Puls 110/min, SpO2 94%, AF 22/min.",
+    "question": "Beschreiben Sie die Vorbereitung und Durchführung eines 12-Kanal-EKGs inklusive korrekter Elektrodenanlage.",
+    "modelAnswer": "VORBEREITUNG:\n- Material: 12-Kanal-EKG-Gerät, Klebeelektroden oder Saugelektroden, Elektrodenspray, ggf. Einmalrasierer.\n- Patient: Oberkörper, Unterarme und Unterschenkel frei machen, Pat. soll einige Minuten ausruhen, angenehmes Raumklima, über Untersuchung informieren.\n\nELEKTRODENANLAGE:\n- Extremitätenableitungen: R (rot) = rechter Arm, L (gelb) = linker Arm, F (grün) = linker Fuß, N (schwarz) = rechter Fuß.\n- Brustwandableitungen: C1 (rot) = 4. ICR rechts Sternalrand, C2 (gelb) = 4. ICR links Sternalrand, C3 (grün) = zwischen C2 und C4, C4 (braun) = 5. ICR MCL, C5 (schwarz) = vordere Axillarlinie auf Höhe C4, C6 (violett) = mittlere Axillarlinie auf Höhe C4/C5.\n\nNACHBEARBEITUNG:\nEKG beschriften (Name, Geburtsdatum, Datum, Uhrzeit, Anlass), Qualität beurteilen, Elektroden entfernen, dokumentieren, Saugelektroden desinfizieren."
   }
+
+  
 ];
 
 // ----------------------------------------------------------------------------
