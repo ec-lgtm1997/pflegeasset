@@ -33,7 +33,7 @@ export function StartScreen({
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="mx-auto w-full max-w-5xl px-6 py-16"
+      className="mx-auto w-full max-w-3xl px-6 py-16"
     >
       <div className="text-center">
         <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground">
@@ -74,7 +74,7 @@ export function StartScreen({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="grid gap-2.5">
           {cases.map((c, i) => {
             const active = selected.has(c.caseId);
             return (
@@ -86,7 +86,7 @@ export function StartScreen({
                 transition={{ delay: Math.min(i, 12) * 0.02, duration: 0.3 }}
                 whileHover={{ y: -1 }}
                 whileTap={{ scale: 0.995 }}
-                className={`group relative flex flex-col items-start gap-3 rounded-2xl border bg-card p-4 text-left transition-all duration-200 h-full ${
+                className={`group relative flex items-start gap-4 rounded-2xl border bg-card p-4 text-left transition-all duration-200 ${
                   active
                     ? "border-primary/60 shadow-[0_6px_24px_-12px_oklch(0.52_0.13_248/0.35)] ring-1 ring-primary/30"
                     : "border-border hover:border-foreground/15 hover:shadow-sm"
@@ -101,24 +101,22 @@ export function StartScreen({
                 >
                   {active && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
                 </div>
-                <div className="min-w-0 flex-1 flex flex-col justify-between h-full w-full">
-                  <div>
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-                      <span className="text-[0.7rem] font-mono uppercase tracking-wider text-muted-foreground">
-                        Fall {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="text-[0.7rem] font-medium text-muted-foreground">
-                        ·
-                      </span>
-                      <span className="inline-flex items-center gap-1 text-[0.7rem] font-medium text-muted-foreground">
-                        <FileText className="h-3 w-3" />
-                        {c.questions.length} Frage
-                        {c.questions.length === 1 ? "" : "n"}
-                      </span>
-                    </div>
-                    <div className="mt-1.5 text-sm font-medium leading-snug text-foreground">
-                      {c.title}
-                    </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                    <span className="text-[0.7rem] font-mono uppercase tracking-wider text-muted-foreground">
+                      Fall {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[0.7rem] font-medium text-muted-foreground">
+                      ·
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-[0.7rem] font-medium text-muted-foreground">
+                      <FileText className="h-3 w-3" />
+                      {c.questions.length} Frage
+                      {c.questions.length === 1 ? "" : "n"}
+                    </span>
+                  </div>
+                  <div className="mt-1.5 text-sm font-medium leading-snug text-foreground">
+                    {c.title}
                   </div>
                 </div>
               </motion.button>
