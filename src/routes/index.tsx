@@ -160,11 +160,6 @@ function Index() {
   );
 }
 
-// tiny ref helper to avoid importing useRef from another file
-import { useRef } from "react";
-function useMemoRef<T>(initial: T) {
-  return useRef<T>(initial);
-}
 
 function BackgroundGlow() {
   return (
