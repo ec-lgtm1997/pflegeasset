@@ -245,7 +245,7 @@ export const hardQuestions: HardQuestion[] = [
       "Erklären Sie die exakte anatomische Platzierung aller sechs Brustwandelektroden (C1 bis C6) nach dem internationalen IEC-Standard für das 12-Kanal-EKG inklusive der jeweiligen Farbcodierung. Welche Vorbereitungsschritte und Fehlerquellen müssen pflegerisch beachtet werden?",
     modelAnswer:
       "Exakte Platzierung und Farbcodierung (IEC):\n- C1 (Rot): 4. Interkostalraum (ICR) rechts direkt am Sternalrand.\n- C2 (Gelb): 4. Interkostalraum (ICR) links direkt am Sternalrand.\n- C4 (Braun): 5. Interkostalraum (ICR) links auf der Medioklavikularlinie (MCL) (wird vor C3 geklebt!).\n- C3 (Grün): Exakt mittig auf der Verbindungslinie zwischen Elektrode C2 und C4.\n- C5 (Schwarz): Vordere Axillarlinie (VAL), exakt auf horizontaler Höhe von Elektrode C4.\n- C6 (Violett): Mittlere Axillarlinie (MAL), exakt auf horizontaler Höhe von Elektrode C4 und C5.\n\nVorbereitung & Fehlerquellen: Patient muss vor Messung 5 Minuten entspannt ruhen. Bei starker Behaarung ist eine Rasur zwingend erforderlich (Minderung des Übergangswiderstandes). Haut entfetten. Fehlerquellen/Artefakte: Muskelzittern durch Frieren oder Anspannung (unruhige Basislinie), lose Kontakte, verpolte Kabel, oder elektromagnetische Störfelder (z. B. Smartphone in Patientennähe)."
-  }
+  },
 
   // ============================================================================
   // ERWEITERUNG: SCHWER / OSCE — FÄLLE 16 BIS 25
