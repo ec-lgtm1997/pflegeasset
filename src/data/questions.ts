@@ -335,23 +335,37 @@ export const hardQuestions: HardQuestion[] = [
 // ----------------------------------------------------------------------------
 // Helper
 // ----------------------------------------------------------------------------
-export function getQuestionsByDifficulty(difficulty: Difficulty): Question[] {
-  switch (difficulty) {
-    case "leicht":
-      return easyQuestions;
-    case "mittel":
-      return mediumQuestions;
-    case "schwer":
-      return hardQuestions;
-  }
+
+/** Kurzer Titel aus der Fallbeschreibung – erste sinnvolle Phrase. */
+function deriveTitle(description: string): string {
+  const firstSentence = description.split(/[.!?]\s/)[0] ?? description;
+  const trimmed = firstSentence.replace(/\s+/g, " ").trim();
+  if (trimmed.length <= 70) return trimmed;
+  return trimmed.slice(0, 67).trimEnd() + "…";
 }
 
-export function pickSessionQuestions(
-  difficulty: Difficulty,
-  count: number | "all",
-): Question[] {
-  const pool = getQuestionsByDifficulty(difficulty);
-  const shuffled = [...pool].sort(() => Math.random() - 0.5);
-  if (count === "all") return shuffled;
-  return shuffled.slice(0, Math.min(count, shuffled.length));
+/** Gruppiert alle Fragen nach caseId, in der Reihenfolge ihres Auftretens. */
+export function getCases(): CaseGroup[] {
+  const map = new Map<string, CaseGroup>();
+  for (const q of hardQuestions) {
+    const existing = map.get(q.caseId);
+    if (existing) {
+      existing.questions.push(q);
+    } else {
+      map.set(q.caseId, {
+        caseId: q.caseId,
+        caseDescription: q.caseDescription,
+        title: deriveTitle(q.caseDescription),
+        questions: [q],
+      });
+    }
+  }
+  return Array.from(map.values());
+}
+
+/** Sammelt alle Fragen der ausgewählten Fälle, gruppiert nach Fall. */
+export function pickSessionByCases(caseIds: string[]): Question[] {
+  const cases = getCases();
+  const selected = cases.filter((c) => caseIds.includes(c.caseId));
+  return selected.flatMap((c) => c.questions);
 }
