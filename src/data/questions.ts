@@ -366,9 +366,8 @@ export const hardQuestions: HardQuestion[] = [
       "Reflex- und Wurzelzuordnung:\n- Patellarsehnenreflex (PSR): Korrespondiert funktionell mit der Nervenwurzel L4. Der Kennmuskel ist der M. quadriceps femoris.\n- Achillessehnenreflex (ASR): Korrespondiert funktionell mit der Nervenwurzel S1. Der Kennmuskel ist der M. triceps surae.\n\nPathologischer Befund bei Wurzelkompression: Bei einer echten mechanischen Nervenwurzelkompression (z. B. durch einen Bandscheibenvorfall) zeigt sich der entsprechende Eigenreflex im Seitenvergleich auf der betroffenen Seite abgeschwächt (Hyporeflexie) oder komplett erloschen (Areflexie).\n\nKorrespondierende Gehproben:\n- Fersengang: Ist bei einer Schädigung der Wurzel L5 (Kennmuskel M. tibialis anterior / Fußheber) links oder rechts aufgehoben; der Fuß klatscht auf den Boden.\n- Zehenspitzenstand: Ist bei einer Schädigung der Wurzel S1 (Kennmuskel M. triceps surae / Plantarflexion) auf der betroffenen Seite nicht mehr möglich; der Patient kann das Körpergewicht nicht auf den Vorfuß verlagern."
   },
 
-  [
   {
-    "id": "schwer-26",
+    "id": "schwer-026",
     "caseId": "case-23",
     "difficulty": "schwer",
     "caseDescription": "Herr Schmidt, 58 Jahre, männlich, Hypertoniker, übergewichtig (BMI 32), wird vom Rettungsdienst eingeliefert. Er berichtet über plötzlich einsetzende starke Brustschmerzen mit Druckgefühl, die in den linken Arm und den Kiefer ausstrahlen. Er schwitzt stark, ist blass und wirkt ängstlich. Die Schmerzen bestehen seit ca. 45 Minuten. Vitalzeichen: RR 160/95 mmHg, Puls 110/min, SpO2 94%, AF 22/min.",
@@ -376,7 +375,7 @@ export const hardQuestions: HardQuestion[] = [
     "modelAnswer": "VERDACHTSDIAGNOSE: Akuter Myokardinfarkt (Herzinfarkt) wahrscheinlich STEMI (ST-Elevation Myocardial Infarction) aufgrund der typischen Symptomatik.\n\nSOFORTMASSNAHMEN (VITAL FLAGS - sofort handeln!):\n1. Notruf / Arzt sofort informieren.\n2. Patient hinlegen, Oberkörper leicht erhöht (30°), Ruhe.\n3. Venösen Zugang legen.\n4. O2-Gabe (bei SpO2 <95%).\n5. Monitoring: EKG anlegen, kontinuierliche RR- und SpO2-Messung.\n6. Nitro nach ärztlicher Anordnung.\n7. Blutabnahme: Troponin, CK-MB, Blutbild, Gerinnung.\n8. Vorbereitung auf Herzkatheter ('Zeit ist Muskel').\n9. Nichts essen/trinken lassen (OP-Vorbereitung)."
   },
   {
-    "id": "schwer-27",
+    "id": "schwer-027",
     "caseId": "case-23",
     "difficulty": "schwer",
     "caseDescription": "Herr Schmidt, 58 Jahre, männlich, Hypertoniker, übergewichtig (BMI 32), wird vom Rettungsdienst eingeliefert. Er berichtet über plötzlich einsetzende starke Brustschmerzen mit Druckgefühl, die in den linken Arm und den Kiefer ausstrahlen. Er schwitzt stark, ist blass und wirkt ängstlich. Die Schmerzen bestehen seit ca. 45 Minuten. Vitalzeichen: RR 160/95 mmHg, Puls 110/min, SpO2 94%, AF 22/min.",
@@ -385,7 +384,7 @@ export const hardQuestions: HardQuestion[] = [
   },
 
   {
-    "id": "schwer-28",
+    "id": "schwer-028",
     "caseId": "case-23",
     "difficulty": "schwer",
     "caseDescription": "Herr Schmidt, 58 Jahre, männlich, Hypertoniker, übergewichtig (BMI 32), wird vom Rettungsdienst eingeliefert. Er berichtet über plötzlich einsetzende starke Brustschmerzen mit Druckgefühl, die in den linken Arm und den Kiefer ausstrahlen. Er schwitzt stark, ist blass und wirkt ängstlich. Die Schmerzen bestehen seit ca. 45 Minuten. Vitalzeichen: RR 160/95 mmHg, Puls 110/min, SpO2 94%, AF 22/min.",
