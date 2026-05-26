@@ -30,6 +30,7 @@ export interface MediumQuestion {
 
 export interface HardQuestion {
   id: string;
+  caseId: string; // Eindeutige ID zur Zuordnung und Filterung gleicher Fallbeschreibungen
   difficulty: "schwer";
   caseDescription: string;
   question: string;
@@ -86,18 +87,12 @@ export const mediumQuestions: MediumQuestion[] = [
 ];
 
 // ----------------------------------------------------------------------------
-// SCHWER / OSCE — Fallbasierte offene Fragen
+// SCHWER / OSCE — Fallbasierte offene Fragen (25 Fragen mit Case-IDs)
 // ----------------------------------------------------------------------------
-// ============================================================================
-// SCHWER / OSCE — Fallbasierte offene Fragen (15 Fälle)
-// ----------------------------------------------------------------------------
-// Extrahiert aus den Katalogen für die datenbankunabhängige Architektur.
-// Jede Frage folgt dem exakten Workflow-Schema des Pflegeassessments.
-// ============================================================================
-
 export const hardQuestions: HardQuestion[] = [
   {
     id: "schwer-001",
+    caseId: "case-01",
     difficulty: "schwer",
     caseDescription:
       "Frau S. (58 Jahre) stellt sich mit akuten, heftigen Schmerzen im unteren Rückenbereich vor, die vor allem nach der Gartenarbeit gestern aufgetreten sind. Sie nimmt eine deutliche Schonhaltung (Rumpfneigung nach links) ein. Auf Nachfrage gibt sie an, dass der Schmerz ziehend über die Vorderseite des rechten Oberschenkels bis zum Knie zieht. Sie habe das Gefühl, das rechte Bein fühle sich beim Gehen „instabil“ an und sie müsse aktiv aufpassen, nicht einzuknicken.",
@@ -108,16 +103,18 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-002",
+    caseId: "case-01",
     difficulty: "schwer",
     caseDescription:
       "Frau S. (58 Jahre) stellt sich mit akuten, heftigen Schmerzen im unteren Rückenbereich vor, die vor allem nach der Gartenarbeit gestern aufgetreten sind. Sie nimmt eine deutliche Schonhaltung (Rumpfneigung nach links) ein. Auf Nachfrage gibt sie an, dass der Schmerz ziehend über die Vorderseite des rechten Oberschenkels bis zum Knie zieht. Sie habe das Gefühl, das rechte Bein fühle sich beim Gehen „instabil“ an und sie müsse aktiv aufpassen, nicht einzuknicken.",
     question:
       "Formulieren Sie fünf präzise offene Fragen im Rahmen der symptomfokussierten Anamnese (subjektive Daten), um den Schmerzverlauf und mögliche neurologische Defizite differenziert zu explizieren.",
     modelAnswer:
-      "Fünf offene Fragen zur Symptompräzisierung:\n1. Lokalisation/Ausstrahlung: „Können Sie mit dem Finger den genauen Weg beschreiben, den der Schmerz von Ihrem Rücken in das rechte Bein nimmt, und wo genau er aufhört?“\n2. Qualität: „Wie fühlt sich der Schmerz im Bein an – ist er eher stechend-elektrisierend, dumpf drückend oder brennend?“\n3. Quantität: „Wenn 0 kein Schmerz ist und 10 der unerträglichste Schmerz: Wie stark ist der Schmerz aktuell im Ruhezustand und wie stark bei Bewegung?“\n4. Modifizierende Faktoren: „Gibt es bestimmte Körperpositionen, wie zum Beispiel das Hinlegen mit angewinkelten Beinen oder das Vorbeugen im Sitzen, die Ihren Schmerz merklich lindern oder verstärken?“\n5. Begleitsymptome (Neurologie): „Haben Sie neben den Schmerzen ein Taubheitsgefühl, ein Kribbeln oder ein Gefühl von 'pelziger Haut' auf der Vorderseite Ihres Oberschenkels oder Knies bemerkt?“"
+      "Fünf open Fragen zur Symptompräzisierung:\n1. Lokalisation/Ausstrahlung: „Können Sie mit dem Finger den genauen Weg beschreiben, den der Schmerz von Ihrem Rücken in das rechte Bein nimmt, und wo genau er aufhört?“\n2. Qualität: „Wie fühlt sich der Schmerz im Bein an – ist er eher stechend-elektrisierend, dumpf drückend oder brennend?“\n3. Quantität: „Wenn 0 kein Schmerz ist und 10 der unerträglichste Schmerz: Wie stark ist der Schmerz aktuell im Ruhezustand und wie stark bei Bewegung?“\n4. Modifizierende Faktoren: „Gibt es bestimmte Körperpositionen, wie zum Beispiel das Hinlegen mit angewinkelten Beinen oder das Vorbeugen im Sitzen, die Ihren Schmerz merklich lindern oder verstärken?“\n5. Begleitsymptome (Neurologie): „Haben Sie neben den Schmerzen ein Taubheitsgefühl, ein Kribbeln oder ein Gefühl von 'pelziger Haut' auf der Vorderseite Ihres Oberschenkels oder Knies bemerkt?“"
   },
   {
     id: "schwer-003",
+    caseId: "case-02",
     difficulty: "schwer",
     caseDescription:
       "Herr M. (44 Jahre, Fliesenleger) kommt aufgrund seit drei Tagen zunehmender Rückenschmerzen in die Ambulanz. Die Schmerzen strahlen über die dorsolaterale Seite des linken Oberschenkels und die ventrolaterale Seite des Unterschenkels direkt bis in den Fußrücken aus. Zudem klagt er über ein pelziges Gefühl („Ameisenlaufen“) im Bereich der großen Zehe. Bei der Gehprobe fällt auf, dass der linke Vorfuß beim Aufsetzen hörbar auf den Boden klatscht.",
@@ -128,6 +125,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-004",
+    caseId: "case-02",
     difficulty: "schwer",
     caseDescription:
       "Herr M. (44 Jahre, Fliesenleger) kommt aufgrund seit drei Tagen zunehmender Rückenschmerzen in die Ambulanz. Die Schmerzen strahlen über die dorsolaterale Seite des linken Oberschenkels und die ventrolaterale Seite des Unterschenkels direkt bis in den Fußrücken aus. Zudem klagt er über ein pelziges Gefühl („Ameisenlaufen“) im Bereich der großen Zehe. Bei der Gehprobe fällt auf, dass der linke Vorfuß beim Aufsetzen hörbar auf den Boden klatscht.",
@@ -138,6 +136,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-005",
+    caseId: "case-03",
     difficulty: "schwer",
     caseDescription:
       "Herr K. (39 Jahre) hat vor zwei Tagen beim Versuch, eine schwere Waschmaschine zu heben, einen plötzlichen, einschießenden Schmerz im lumbosakralen Übergang verspürt. Seither leidet er unter Schmerzen, die stechend über die Rückseite (dorsal) des rechten Beins bis hin zum lateralen Fußrand ausstrahlen. Das Auftreten auf den rechten Fuß bereitet ihm extreme Probleme; er kann sich kaum auf die Zehenspitzen stellen.",
@@ -148,6 +147,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-006",
+    caseId: "case-04",
     difficulty: "schwer",
     caseDescription:
       "Frau B. (82 Jahre) befindet sich am vierten postoperativen Tag nach einer elektiven Knie-Totalendoprothese (TEP) links auf der orthopädischen Station. Sie ist leicht desorientiert, klagt über nächtliche Schlaflosigkeit und erhält ein Sedativum zur Nacht. Sie hat einen liegenden intravenösen Zugang für die postoperative Analgetikatherapie. Bei der Mobilisation zeigt sie deutliche Balanceschwierigkeiten, hält sich an Wänden fest und neigt zu drängendem Toilettendrang aufgrund einer bekannten Dranginkontinenz. In der Patientengeschichte ist ein Sturz zu Hause vor drei Monaten dokumentiert.",
@@ -158,9 +158,10 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-007",
+    caseId: "case-05",
     difficulty: "schwer",
     caseDescription:
-      "Herr V. (34 Jahre) stürzt bei Dacharbeiten aus ca. 3 Metern Höhe von einer Leiter und schlägt auf einer Blechkante auf. Sie treffen als Ersthelfer/Pflegekraft ein. Der Patient liegt auf dem Boden, stöhnt laut vor Schmerz, is aber ansprechbar. Am rechten Oberschenkel zeigt sich eine tiefe Riss-Lazerationswunde, aus der hellrotes Blut stoßweise/spritzend ausreckt. Der Hosenboden ist bereits großflächig durchnässt, eine Blutlache bildet sich rasch auf dem Boden.",
+      "Herr V. (34 Jahre) stürzt bei Dacharbeiten aus ca. 3 Metern Höhe von einer Leiter und schlägt auf einer Blechkante auf. Sie treffen als Ersthelfer/Pflegekraft ein. Der Patient liegt auf dem Boden, stöhnt laut vor Schmerz, ist aber ansprechbar. Am rechten Oberschenkel zeigt sich eine tiefe Riss-Lazerationswunde, aus der hellrotes Blut stoßweise/spritzend austritt. Der Hosenboden ist bereits großflächig durchnässt, eine Blutlache bildet sich rasch auf dem Boden.",
     question:
       "Beschreiben Sie das konkrete, mechanische Vorgehen zur Stillung dieser kritischen Extremitätenblutung unter Verwendung des vorlesungsspezifischen Algorithmus (Tourniquet, Wound Packing, Druckverband). Wie gehen Sie Schritt für Schritt vor und wie lagern Sie den Patienten?",
     modelAnswer:
@@ -168,6 +169,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-008",
+    caseId: "case-06",
     difficulty: "schwer",
     caseDescription:
       "Im Rahmen Ihres Dienstes in der interdisziplinären Notaufnahme wird Frau T. (28 Jahre) nach einem ungebremsten Sturz mit dem E-Bike eingeliefert. Sie trug keinen Helm. Bei der Übernahme ist die Patientin somnolent (Augenöffnen nur auf lautes Ansprechen), reagiert verlangsamt, ist zeitlich und örtlich desorientiert. Es zeigt sich eine großflächige Schürfwunde und Hämatombildung parietal rechts sowie eine sichtbare Fehlstellung des linken Unterarms.",
@@ -178,6 +180,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-009",
+    caseId: "case-07",
     difficulty: "schwer",
     caseDescription:
       "Der Student Jan (21 Jahre) stellt sich mit stark zunehmenden Bauchschmerzen vor, die gestern Abend diffus im Bereich des Bauchnabels (periumbilikal) begonnen haben und im Verlauf der Nacht in den rechten Unterbauch gewandert sind. Er klagt über Appetitlosigkeit, leichte Übelkeit und hat sich einmal erbrochen. Die körperliche Messung ergibt eine axilläre Temperatur von 37,6 °C und eine rektale Temperatur von 38,5 °C. Das Gangbild ist gebeugt, das rechte Bein wird schonend nachgezogen.",
@@ -188,6 +191,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-010",
+    caseId: "case-08",
     difficulty: "schwer",
     caseDescription:
       "Frau K. (72 Jahre, Zustand nach gynäkologischer Laparotomie vor 5 Tagen) klagt über ein starkes, schmerzhaftes Völlegefühl und zunehmende, krampfartige Bauchschmerzen. Bei der Inspektion zeigt sich das Abdomen massiv aufgetrieben und prall-elastisch (Meteorismus). Sie gibt an, seit über 36 Stunden weder Stuhlgang noch Winde gehabt zu haben. Seit zwei Stunden leidet sie unter heftigem, schwallartigem Erbrechen einer grünlich-bräunlichen Flüssigkeit, die einen fäkalen Geruch aufweist.",
@@ -198,9 +202,10 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-011",
+    caseId: "case-09",
     difficulty: "schwer",
     caseDescription:
-      "Herr D. (55 Jahre, bekannter chronischer Alkoholabusus) wird von seinem Sohn auf die Station gebracht. Dem Sohn ist aufgefallen, dass die Augen (Skleren) und die Haut des Vaters intensiv gelb gefärbt sind. Der Patient wirkt apathisch, klagt über chronische Müdigkeit und einen stark juckenden Hautausschlag (Pruritus). Der Bauch ist massiv prall vorgewölbt, der Bauchnabel ist verstrichen und es zeigen sich geschwungene, erweiterte Venenzeichnungen um den Nabel herum. Schmerzen werden verneint. Der Stuhl sei seit Tagen hell-grau, der Urin bierbraun.",
+      "Herr D. (55 Jahre, bekannter chronischer Alkoholabusus) wird von seinem Sohn auf die Station gebracht. Dem Sohn ist aufgefallen, dass die Augen (Skleren) und die Haut des Vaters intensiv gelb gefärbt sind. Der Patient wirkt apathisch, klagt über chronische Müiredigkeit und einen stark juckenden Hautausschlag (Pruritus). Der Bauch ist massiv prall vorgewölbt, der Bauchnabel ist verstrichen und es zeigen sich geschwungene, erweiterte Venenzeichnungen um den Nabel herum. Schmerzen werden verneint. Der Stuhl sei seit Tagen hell-grau, der Urin bierbraun.",
     question:
       "Beschreiben Sie die objektive körperliche Untersuchung (O-Daten). Welche klassischen „Leberhautzeichen“ inspizieren Sie von den Händen bis zum Gesicht, wie führen Sie die Perkussion und Lagerung zum klinischen Nachweis von freier Flüssigkeit im Abdomen (Aszites) durch und wie funktioniert die „Kratzauskultation“ der Lebergrenzen?",
     modelAnswer:
@@ -208,6 +213,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-012",
+    caseId: "case-10",
     difficulty: "schwer",
     caseDescription:
       "Herr N. (68 Jahre, starker Raucher, bekanntes metabolisch-vaskuläres Syndrom) berichtet, dass er beim Gehen bereits nach einer Strecke von ca. 80 bis 100 Metern gezwungen sei, stehenzubleiben, da ein unerträglicher, krampfartiger Schmerz in der rechten Wadenmuskulatur einschieße. Nach einer kurzen Pause im Stehen lasse der Schmerz nach, sodass er weitergehen könne. Bei der Inspektion der Füße fällt auf, dass die Haut rechts blass, kühl und haarlos ist; Ödeme liegen nicht vor.",
@@ -218,9 +224,10 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-013",
+    caseId: "case-11",
     difficulty: "schwer",
     caseDescription:
-      "Frau G. (61 Jahre, Zustand nach ausgedehnter abdominaler Tumorchirurgie vor 2 Wochen) klagt über ein akutes Schwere- und Spannungsgefühl im linken Unterschenkel. Bei der Inspektion zeigt sich eine deutliche Schwellung des linken Beins, die Haut ist lokal zyanotisch verfärbt und die oberflächlichen Venen treten verstärkt hervor (Kollateralvenen). Beim Abtasten klagt sie über massiven Druckschmerz entlang der tiefen Venenbahn. Während Sie die Patientin untersuchen, klagt sie plötzlich über akut einsetzende Atemnot (Dyspnoe), stechende Schmerzen im rechten Brustkorb (Thoraxschmerz) und beginnt trocken zu husten. Sie wirkt kaltschweißig und hochgradig ängstlich.",
+      "Frau G. (61 Jahre, Zustand nach ausgedehnter abdominaler Tumorchirurgie vor 2 Wochen) klagt über ein akutes Schwere- und Spannungsgefühl im linken Unterschenkel. Bei der Inspektion zeigt sich eine deutliche Schwellung des linken Beins, die Haut ist lokal zyanotisch verfärbt und die oberflächlichen Venen treten verstärkt hervor (Kollateralvenen). Beim Abtasten klagt sie über massiven Druckschmerz entlang der tiefen Venenbahn. Während Sie die Patientin untersuchen, klagt sie plötzlich über akut einsetzende Atemnot (Dyspnoe), stehende Schmerzen im rechten Brustkorb (Thoraxschmerz) und beginnt trocken zu husten. Sie wirkt kaltschweißig und hochgradig ängstlich.",
     question:
       "Welches standardisierte klinische Score-System (z. B. Wells-Score) wenden Sie zur Einschätzung der Wahrscheinlichkeit einer Lungenembolie an? Nennen Sie mindestens vier Kriterien direkt aus dem Fallbeispiel, die den Score erhöhen.",
     modelAnswer:
@@ -228,9 +235,10 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-014",
+    caseId: "case-11",
     difficulty: "schwer",
     caseDescription:
-      "Frau G. (61 Jahre, Zustand nach ausgedehnter abdominaler Tumorchirurgie vor 2 Wochen) klagt über ein akutes Schwere- und Spannungsgefühl im linken Unterschenkel. Bei der Inspektion zeigt sich eine deutliche Schwellung des linken Beins, die Haut ist lokal zyanotisch verfärbt und die oberflächlichen Venen treten verstärkt hervor (Kollateralvenen). Beim Abtasten klagt sie über massiven Druckschmerz entlang der tiefen Venenbahn. Während Sie die Patientin untersuchen, klagt sie plötzlich über akut einsetzende Atemnot (Dyspnoe), stechende Schmerzen im rechten Brustkorb (Thoraxschmerz) und beginnt trocken zu husten. Sie wirkt kaltschweißig und hochgradig ängstlich.",
+      "Frau G. (61 Jahre, Zustand nach ausgedehnter abdominaler Tumorchirurgie vor 2 Wochen) klagt über ein akutes Schwere- und Spannungsgefühl im linken Unterschenkel. Bei der Inspektion zeigt sich eine deutliche Schwellung des linken Beins, die Haut ist lokal zyanotisch verfärbt und die oberflächlichen Venen treten verstärkt hervor (Kollateralvenen). Beim Abtasten klagt sie über massiven Druckschmerz entlang der tiefen Venenbahn. Während Sie die Patientin untersuchen, klagt sie plötzlich über akut einsetzende Atemnot (Dyspnoe), stehende Schmerzen im rechten Brustkorb (Thoraxschmerz) und beginnt trocken zu husten. Sie wirkt kaltschweißig und hochgradig ängstlich.",
     question:
       "Welche unmittelbaren pflegerischen Erstinterventionsmaßnahmen müssen bei Frau G. bezüglich Lagerung, Aktivitätsgrad und Sauerstoffzufuhr getroffen werden, um eine Progression der Embolie zu verhindern? Welche Untersuchungstechniken (pDMS, Vitalparameter) führen Sie sofort durch?",
     modelAnswer:
@@ -238,6 +246,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-015",
+    caseId: "case-12",
     difficulty: "schwer",
     caseDescription:
       "Frau L. (74 Jahre) stellt sich mit zunehmender Belastungsdyspnoe und gelegentlichem Schwindelgefühl vor. Im Rahmen der klinischen Untersuchung führen Sie ein Pflegeassessment des kardiovaskulären Systems durch. Bei der Herzauskultation mit dem Stethoskop hören Sie über dem 2. Interkostalraum (ICR) rechts sternal ein lautes, raues, spindelförmiges Geräusch während der Systole (Systolikum), das deutlich hörbar in die Halsschlagadern (Aa. carotides) ausstrahlt. Das zeitgleich geschriebene Ruhe-EKG zeigt eine unregelmäßige Kammerfrequenz von 115/min, das komplette Fehlen von P-Wellen und unregelmäßige, chaotische Zackenabstände (QRS-Komplexe).",
@@ -248,6 +257,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-016",
+    caseId: "case-13",
     difficulty: "schwer",
     caseDescription:
       "Frau M. (32 Jahre) krümmt sich vor Schmerzen im Untersuchungszimmer. Sie berichtet von plötzlich einschießenden, unerträglichen, wellenartigen Schmerzen (Intensität 9/10), die in der rechten Flanke begonnen haben und nun phasenweise bis in die Schamlippen ausstrahlen. Ihr ist extrem übel, sie hat sich bereits zweimal erbrochen. Bei der Urinstix-Untersuchung zeigt sich eine deutliche Makrohämaturie (Blut im Urin).",
@@ -258,16 +268,18 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-017",
+    caseId: "case-14",
     difficulty: "schwer",
     caseDescription:
       "Frau J. (26 Jahre) bittet Sie auf der gynäkologischen Station dringend um Hilfe. Sie klagt über plötzlich aufgetretene, stechende, einseitige Unterbauchschmerzen links, die progressiv an Intensität zunehmen. Sie gibt an, dass ihre Periode seit ca. zwei Wochen überfällig sei. Bei den Vitalzeichen stellen Sie eine zunehmende Tachykardie (Puls 108/min) und einen sinkenden Blutdruck (95/60 mmHg) fest. Die Haut ist blass und kaltschweißig.",
     question:
-      "Welche lebensbedrohliche gynäkologische Verdachtshypothese müssen Sie formulieren? Bewerten Sie die erhobenen Vitalzeichen im Sinne der Triage (Red/Vital Flags) und beschreiben Sie das unmittelbare pflegerische Notfallmanagement.",
+      "Welche lebensbedrohliche gynäkologische Verdachtshypothese müssen Sie formularisieren? Bewerten Sie die erhobenen Vitalzeichen im Sinne der Triage (Red/Vital Flags) und beschreiben Sie das unmittelbare pflegerische Notfallmanagement.",
     modelAnswer:
       "Verdachtsdiagnose: Rupturierte Extrauteringravidität (Eileiterschwangerschaft) links mit akutem intraabdominellem hämorrhagischen Schock.\n\nBewertung der Triage-Parameter (Vital Flags): Es liegt eine akute Lebensgefahr vor (Triage-Kategorie Rot / Sofortiger Handlungsbedarf). Die Kombination aus plötzlichem Unterbauchschmerz, überfälliger Menses, Tachykardie (Puls > 100/min), Hypotonie (RR < 100 mmHg) und Kaltschweißigkeit beweist einen massiven inneren Blutverlust (hämorrhagischer Schock) nach Tubenruptur.\n\nNotfallmanagement:\n1. Unverzügliche Alarmierung des Notarztteams / Dienstarztes (Notruf 144 bzw. hausinterner Reanimationsruf).\n2. Absolute Bettruhe, flache Rückenlage und sofortige Bereitstellung/Verabreichung von hochdosiertem Sauerstoff via Maske.\n3. Vorbereitung für die sofortige Anlage von mindestens zwei großlumigen peripheren Venenzugängen zur aggressiven Volumensubstitution und Vorbereitung der operativen Notfall-Laparotomie."
   },
   {
     id: "schwer-018",
+    caseId: "case-15",
     difficulty: "schwer",
     caseDescription:
       "Herr O. (62 Jahre, Diabetiker) stellt sich in der Notaufnahme vor. Er berichtet von seit einer Stunde anhaltenden, unerträglichen Schmerzen hinter dem Brustbein (retrosternal), die er als massives Druck- und Engegefühl beschreibt. Der Schmerz strahle in den linken Arm und den Unterkiefer aus. Er leidet unter akuter Atemnot, ist kaltschweißig und äußert extreme Todesangst. Das Akut-EKG zeigt signifikante ST-Streckenhebungen in den Vorderwandableitungen.",
@@ -278,6 +290,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-019",
+    caseId: "case-16",
     difficulty: "schwer",
     caseDescription:
       "Bei der Visite untersuchen Sie das Abdomen eines Patienten mit Verdacht auf eine akute Cholezystitis (Gallenblasenentzündung). Sie führen die strukturierte Palpation des rechten Oberbauchs durch, um das spezifische Murphy-Zeichen zu überprüfen.",
@@ -288,6 +301,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-020",
+    caseId: "case-17",
     difficulty: "schwer",
     caseDescription:
       "Frau B. (48 Jahre) stellt sich mit starkem Juckreiz, Brennen und Schmerzen in den Hautfalten unterhalb beider Brüste (Submammärraum) vor. Bei der Inspektion sehen Sie eine spiegelbildliche, intensiv gerötete, feuchte und mazerierte Hautoberfläche. An den Rändern der Rötung zeigen sich kleine, punktförmige Pusteln und Schuppungen. Die Patientin ist übergewichtig und leidet unter Diabetes mellitus Typ 2.",
@@ -298,6 +312,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-021",
+    caseId: "case-18",
     difficulty: "schwer",
     caseDescription:
       "Im Rahmen einer kardiologischen Funktionskontrolle führen Sie bei einem Patienten eine systematische Untersuchung des peripheren Venensystems durch. Sie prüfen den Status der Vena jugularis interna zur Abschätzung des zentralen Venendrucks (ZVD).",
@@ -308,6 +323,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-022",
+    caseId: "case-19",
     difficulty: "schwer",
     caseDescription:
       "Bei der körperlichen Untersuchung eines Patienten, der über chronische Abgeschlagenheit klagt, führen Sie die Palpation des Herzens durch, um den Herzspitzenstoß (Apeximpuls) strukturiert zu beurteilen.",
@@ -318,6 +334,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-023",
+    caseId: "case-20",
     difficulty: "schwer",
     caseDescription:
       "Frau P. (71 Jahre) stellt sich mit einer ausgeprägten, schmerzhaften Schwellung des gesamten rechten Beins vor. Bei der pflegerischen Inspektion stellen Sie fest, dass im Gegensatz zu einem klassischen venösen Ödem hier auch die Zehen massiv quaderförmig geschwollen sind. Zwischen den Zehengelenken zeigen sich tiefe Querfalten. Sie versuchen, eine Hautfalte über dem Mittelglied der zweiten Zehe abzuheben, was komplett fehlschlägt.",
@@ -328,6 +345,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-024",
+    caseId: "case-21",
     difficulty: "schwer",
     caseDescription:
       "Im Rahmen der pflegerischen Aufnahme eines chronisch bettlägerigen Patienten führen Sie ein umfassendes Haut- und Gefässassessment durch. Am Fußrücken und an den Zehengelenken des linken Fußes entdecken Sie zwei kreisrunde, scharf begrenzte, tiefe Gewebedefekte (Ulzera), die mit einer harten, schwarzen Kruste (trockenes Gangrän) bedeckt sind. Die umgebende Haut ist extrem blass, glänzend, haarlos und fühlt sich eiskalt an. Ödeme oder Hautpigmentierungen liegen nicht vor.",
@@ -338,6 +356,7 @@ export const hardQuestions: HardQuestion[] = [
   },
   {
     id: "schwer-025",
+    caseId: "case-22",
     difficulty: "schwer",
     caseDescription:
       "Bei einem Patienten mit Verdacht auf ein akutes lumboradikuläres Syndrom führen Sie im Rahmen des physischen Assessments die systematische Überprüfung des Patellarsehnenreflexes (PSR) und des Achillessehnenreflexes (ASR) im Seitenvergleich durch.",
