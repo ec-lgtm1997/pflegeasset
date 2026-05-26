@@ -246,6 +246,111 @@ export const hardQuestions: HardQuestion[] = [
     modelAnswer:
       "Exakte Platzierung und Farbcodierung (IEC):\n- C1 (Rot): 4. Interkostalraum (ICR) rechts direkt am Sternalrand.\n- C2 (Gelb): 4. Interkostalraum (ICR) links direkt am Sternalrand.\n- C4 (Braun): 5. Interkostalraum (ICR) links auf der Medioklavikularlinie (MCL) (wird vor C3 geklebt!).\n- C3 (Grün): Exakt mittig auf der Verbindungslinie zwischen Elektrode C2 und C4.\n- C5 (Schwarz): Vordere Axillarlinie (VAL), exakt auf horizontaler Höhe von Elektrode C4.\n- C6 (Violett): Mittlere Axillarlinie (MAL), exakt auf horizontaler Höhe von Elektrode C4 und C5.\n\nVorbereitung & Fehlerquellen: Patient muss vor Messung 5 Minuten entspannt ruhen. Bei starker Behaarung ist eine Rasur zwingend erforderlich (Minderung des Übergangswiderstandes). Haut entfetten. Fehlerquellen/Artefakte: Muskelzittern durch Frieren oder Anspannung (unruhige Basislinie), lose Kontakte, verpolte Kabel, oder elektromagnetische Störfelder (z. B. Smartphone in Patientennähe)."
   }
+
+  // ============================================================================
+  // ERWEITERUNG: SCHWER / OSCE — FÄLLE 16 BIS 25
+  // ============================================================================
+  {
+    id: "schwer-016",
+    difficulty: "schwer",
+    caseDescription:
+      "Frau M. (32 Jahre) krümmt sich vor Schmerzen im Untersuchungszimmer. Sie berichtet von plötzlich einschießenden, unerträglichen, wellenartigen Schmerzen (Intensität 9/10), die in der rechten Flanke begonnen haben und nun phasenweise bis in die Schamlippen ausstrahlen. Ihr ist extrem übel, sie hat sich bereits zweimal erbrochen. Bei der Urinstix-Untersuchung zeigt sich eine deutliche Makrohämaturie (Blut im Urin).",
+    question:
+      "Welche pathophysiologische Verdachtsdiagnose liegt hier vor? Erklären Sie das typische Schmerzmuster, die Entstehung der Hämaturie sowie die zwei schwerwiegenden klinischen Gefahren (Komplikationen), die bei diesem Krankheitsbild drohen.",
+    modelAnswer:
+      "Verdachtsdiagnose: Akute Nierenkolik / Ureterolithiasis (Nierenstein im Harnleiter) rechts [cite: 2658, 2985, 3020].\n\nPathophysiologie des Schmerzes & Hämaturie: Die wellenartigen Koliken (bis zu 60 Minuten anhaltend) entstehen durch die krampfartige Peristaltik der glatten Muskulatur des Harnleiters, die versucht, den festsitzenden Stein vorwärts zu bewegen[cite: 3021, 3024]. Die Schmerzwanderung von der Flanke bis in das Genitaltrakt folgt dem anatomischen Verlauf des Harnleiters bei der Steinwanderung[cite: 3026]. Die Makrohämaturie resultiert aus der direkten mechanischen Reizung und Mikrotraumatisierung der empfindlichen Urothel-Schleimhaut durch die scharfen Kanten des Steins[cite: 3027].\n\nGefahren / Komplikationen:\n1. Hydronephrose (Nierenstauung): Der Stein verlegt das Lumen komplett, Urin staut sich bis in das Nierenbecken zurück, was zu irreversiblem Parenchymschaden führt[cite: 3029].\n2. Urosepsis: Durch den Harnstau können Bakterien aszendieren und eine lebensgefährliche systemische Blutvergiftung auslösen[cite: 3029]."
+  },
+  {
+    id: "schwer-017",
+    difficulty: "schwer",
+    caseDescription:
+      "Frau J. (26 Jahre) bittet Sie auf der gynäkologischen Station dringend um Hilfe. Sie klagt über plötzlich aufgetretene, stechende, einseitige Unterbauchschmerzen links, die progressiv an Intensität zunehmen. Sie gibt an, dass ihre Periode seit ca. zwei Wochen überfällig sei. Bei den Vitalzeichen stellen Sie eine zunehmende Tachykardie (Puls 108/min) und einen sinkenden Blutdruck (95/60 mmHg) fest. Die Haut ist blass und kaltschweißig.",
+    question:
+      "Welche lebensbedrohliche gynäkologische Verdachtshypothese müssen Sie formulieren? Bewerten Sie die erhobenen Vitalzeichen im Sinne der Triage (Red/Vital Flags) und beschreiben Sie das unmittelbare pflegerische Notfallmanagement.",
+    modelAnswer:
+      "Verdachtsdiagnose: Rupturierte Extrauteringravidität (Eileiterschwangerschaft) links mit akutem intraabdominellem hämorrhagischen Schock [cite: 2979, 2980, 2983, 3155, 3160].\n\nBewertung der Triage-Parameter (Vital Flags): Es liegt eine akute Lebensgefahr vor (Triage-Kategorie Rot / Sofortiger Handlungsbedarf)[cite: 2960, 3490]. Die Kombination aus plötzlichem Unterbauchschmerz, überfälliger Menses, Tachykardie (Puls > 100/min), Hypotonie (RR < 100 mmHg) und Kaltschweißigkeit beweist einen massiven inneren Blutverlust (hämorrhagischer Schock) nach Tubenruptur[cite: 2960, 2961, 3493, 3494, 3665].\n\nNotfallmanagement:\n1. Unverzügliche Alarmierung des Notarztteams / Dienstarztes (Notruf 144 bzw. hausinterner Reanimationsruf)[cite: 3491].\n2. Absolute Bettruhe, flache Rückenlage und sofortige Bereitstellung/Verabreichung von hochdosiertem Sauerstoff via Maske[cite: 3493, 3666].\n3. Vorbereitung für die sofortige Anlage von mindestens zwei großlumigen peripheren Venenzugängen zur aggressiven Volumensubstitution und Vorbereitung der operativen Notfall-Laparotomie."
+  },
+  {
+    id: "schwer-018",
+    difficulty: "schwer",
+    caseDescription:
+      "Herr O. (62 Jahre, Diabetiker) stellt sich in der Notaufnahme vor. Er berichtet von seit einer Stunde anhaltenden, unerträglichen Schmerzen hinter dem Brustbein (retrosternal), die er als massives Druck- und Engegefühl beschreibt. Der Schmerz strahle in den linken Arm und den Unterkiefer aus. Er leidet unter akuter Atemnot, ist kaltschweißig und äußert extreme Todesangst. Das Akut-EKG zeigt signifikante ST-Streckenhebungen in den Vorderwandableitungen.",
+    question:
+      "Klassifizieren Sie das vorliegende kardiovaskuläre Ereignis exakt. Erklären Sie die zugrundeliegende Pathophysiologie, die Bedeutung des Ausspruchs 'Zeit ist Muskel' und begründen Sie, warum Diabetiker bei diesem Krankheitsbild eine besondere Risikogruppe für atypische Verläufe darstellen.",
+    modelAnswer:
+      "Klassifikation: Akuter ST-Hebungs-Myokardinfarkt (STEMI) der Vorderwand [cite: 3764, 3765].\n\nPathophysiologie: Durch einen akuten, kompletten Verschluss einer Herzkranzarterie (meist infolge eines Plaqueeinrisses mit thrombotischer Auflagerung) wird ein Myokardareal vollständig von der Sauerstoffzufuhr abgeschnitten[cite: 3760, 3761]. Dies führt zur Ischämie und nachfolgend zum Absterben der betroffenen Herzmuskelzellen (Nekrose) [cite: 3760, 3761].\n\nBedeutung von 'Zeit ist Muskel': Je länger das Gefäß verschlossen bleibt, desto mehr Herzmuskelgewebe stirbt irreversibel ab[cite: 3766]. Eine sofortige Wiedereröffnung im Herzkatheterlabor (Koronarangiographie mit Stent) innerhalb der ersten Goldene Stunde entscheidet maßgeblich über das Überleben und die verbleibende Herzleistung des Patienten [cite: 3765, 3766].\n\nBesonderheit bei Diabetikern: Durch die chronische hyperglykämische Schädigung des autonomen Nervensystems (autonome diabetische Neuropathie) ist die Schmerzwahrnehmung massiv gestört[cite: 3763]. Diabetiker erleiden häufig einen sogenannten 'stummen Infarkt' ohne typische Brustschmerzen, welcher sich nur durch unspezifische Symptome wie plötzliche Luftnot oder unerklärliche Müdigkeit äußert, was die Diagnose gefährlich verzögert[cite: 3763]."
+  },
+  {
+    id: "schwer-019",
+    difficulty: "schwer",
+    caseDescription:
+      "Bei der Visite untersuchen Sie das Abdomen eines Patienten mit Verdacht auf eine akute Cholezystitis (Gallenblasenentzündung). Sie führen die strukturierte Palpation des rechten Oberbauchs durch, um das spezifische Murphy-Zeichen zu überprüfen.",
+    question:
+      "Beschreiben Sie die exakte manuelle Durchführung des Murphy-Zeichens am Patienten. Welche spezifische Reaktion des Patienten definiert einen positiven Befund und wie unterscheidet sich der Schmerzcharakter einer Cholezystitis grundlegend von dem einer Nierenkolik?",
+    modelAnswer:
+      "Durchführung des Murphy-Zeichens: Der Patient befindet sich in entspannter Rückenlage[cite: 3246]. Der Pflegende/Untersucher platziert die Fingerkuppen der tastenden Hand medial der Medioklavikularlinie (MCL) direkt unterhalb des rechten Rippenbogens (über der anatomischen Lage der Gallenblase)[cite: 3221]. Der Patient wird nun aufgefordert, maximal tief einzuatmen, wodurch das Zwerchfell die Leber und die Gallenblase nach kaudal gegen die tastenden Finger drückt [cite: 3221, 3222].\n\nPositiver Befund: Sobald die entzündete Gallenblase die Finger des Untersuchers berührt, bricht der Patient die Einatmung schmerzbedingt abrupt ab (reflektorischer Atemstopp) [cite: 3222].\n\nUnterschied im Schmerzcharakter:\n- Akute Cholezystitis: Verursacht einen lokalisierten, anhaltenden, dumpfen bis stechenden Entzündungsschmerz im rechten Oberbauch, der häufig in die rechte Schulter ausstrahlt und eine lokale Abwehrspannung zeigt [cite: 2986, 2995, 3064].\n- Nierenkolik: Verursacht wellenartig an- und abschwellende (kolikartige), extrem heftige Schmerzen, die dynamisch von der Flanke in Richtung Genitaltrakt wandern; das Abdomen ist dabei meist weich und nicht druckempfindlich[cite: 2985, 2989, 3002, 3020, 3026]."
+  },
+  {
+    id: "schwer-020",
+    difficulty: "schwer",
+    caseDescription:
+      "Frau B. (48 Jahre) stellt sich mit starkem Juckreiz, Brennen und Schmerzen in den Hautfalten unterhalb beider Brüste (Submammärraum) vor. Bei der Inspektion sehen Sie eine spiegelbildliche, intensiv gerötete, feuchte und mazerierte Hautoberfläche. An den Rändern der Rötung zeigen sich kleine, punktförmige Pusteln und Schuppungen. Die Patientin ist übergewichtig und leidet unter Diabetes mellitus Typ 2.",
+    question:
+      "Formulieren Sie die pflegerische Arbeitshypothese. Erklären Sie die Pathophysiologie dieser Erkrankung unter Einbezug der spezifischen Risikofaktoren der Patientin und nennen Sie vier pflegetherapeutische Maßnahmen zur kausalen Behandlung.",
+    modelAnswer:
+      "Arbeitshypothese: Intertrigo (entzündliche Hauterkrankung der Hautfalten), sekundär kompliziert durch eine kutane Candida-Pilzinfektion (Intertriginöse Candidose) [cite: 2818].\n\nPathophysiologie & Risikofaktoren: Durch das Aneinanderreiben von Haut-auf-Haut in der Falte entsteht mechanische Reibung[cite: 2818]. In Kombination mit lokalem Schweiß (Feuchtigkeit) und Körperwärme kommt es zur Quellung und Schädigung der Hornschicht (Mazeration), wodurch die epidermale Barrierefunktion zerstört wird[cite: 2818]. Dies bietet Hefepilzen (Candida albicans), die das Keratin besiedeln, einen idealen Nährboden[cite: 2818]. Die Adipositas (vergrößerte Hautfalten/Reibung) und der Diabetes mellitus (erhöhter Glukosegehalt im Gewebe fördert das Pilzwachstum) wirken als massive pathophysiologische Treiber[cite: 2818].\n\nPflegetherapeutische Maßnahmen:\n1. Hautpflege & Trockenhaltung: Nach dem Waschen mit pH-neutralen Syndets die Hautfalten extrem gründlich trockentupfen (nicht reiben!)[cite: 2818].\n2. Feuchtigkeitsmanagement: Einlegen von weichen, atmungsaktiven Kompressen oder Baumwolltüchern in die Falten, um Schweiß aktiv aufzusaugen und Haut-auf-Haut-Kontakt zu verhindern[cite: 2818].\n3. Antimykotische Therapie: Konsequente Applikation der ärztlich verordneten topischen Antipilzsalbe oder -creme[cite: 2818].\n4. Druck- und Reibungsentlastung durch das Tragen von gut sitzender, atmungsaktiver Baumwollunterwäsche (Vermeidung von Synthetik)."
+  },
+  {
+    id: "schwer-021",
+    difficulty: "schwer",
+    caseDescription:
+      "Im Rahmen einer kardiologischen Funktionskontrolle führen Sie bei einem Patienten eine systematische Untersuchung des peripheren Venensystems durch. Sie prüfen den Status der Vena jugularis interna zur Abschätzung des zentralen Venendrucks (ZVD).",
+    question:
+      "Beschreiben Sie die exakte Vorgehensweise und die korrekte Positionierung/Lagerung des Patienten für die Beurteilung der Jugularvenenstauung. Welche anatomischen Befunde gelten als physiologisch normal und ab welchem Punkt liegt ein pathologischer Wert vor?",
+    modelAnswer:
+      "Vorgehensweise und Lagerung: Der Patient wird in eine entspannte Rückenlage gebracht, bei der der Oberkörper exakt in einem **35- bis 45-Grad-Winkel** mittels Kopfteil hochgestellt wird[cite: 3549, 3555]. Der Kopf wird leicht zur kontralateralen (gegenüberliegenden) Seite gedreht, um die Halsregion optimal freizulegen.\n\nPhysiologischer Normalbefund: Unter normalen Druckverhältnissen im rechten Vorhof muss die Vena jugularis am Jugulum (oberhalb des Schlüsselbeins) in dieser 45°-Lage vollständig kollabiert bzw. nicht mehr sichtbar gestaut sein[cite: 3549, 3555]. Dies entspricht einem normalen Druck von ca. 8 cm Wassersäule bzw. 5–6 mmHg vor dem rechten Vorhof [cite: 3555, 3556].\n\nPathologischer Befund: Ist die Jugularvene in der 45°-Oberkörperhochlage weiterhin deutlich sichtbar über das Jugulum hinaus gestaut oder pulsierend tastbar, liegt eine pathologische **Jugularvenenstauung** vor[cite: 3549, 3557]. Dies beweist einen erhöhten zentralen Venendruck (ZVD), wie er typisch für eine dekompensierte Rechtsherzinsuffizienz, einen Perikarderguss oder eine Volumenüberlastung ist[cite: 3479, 3548, 3557]."
+  },
+  {
+    id: "schwer-022",
+    difficulty: "schwer",
+    caseDescription:
+      "Bei der körperlichen Untersuchung eines Patienten, der über chronische Abgeschlagenheit klagt, führen Sie die Palpation des Herzens durch, um den Herzspitzenstoß (Apeximpuls) strukturiert zu beurteilen.",
+    question:
+      "In welchem exakten anatomischen Interkostalraum (ICR) und entlang welcher Orientierungslinie palpieren Sie physiologischerweise den Herzspitzenstoß? Wie verändern Sie die Position des Patienten, falls der Impuls in Rückenlage nicht tastbar ist, und welche klinische Bedeutung hat ein 'hebender, nach links verlagerter' Stoß?",
+    modelAnswer:
+      "Anatomische Lokalisation: Der Herzspitzenstoß wird physiologischerweise im **5. Interkostalraum (ICR) links** exakt auf oder leicht medial der **Medioklavikularlinie (MCL)** palpiert [cite: 3560, 3576, 3578].\n\nPositionsänderung bei Nicht-Tastbarkeit: Lässt sich der Impuls in flacher Rückenlage (z. B. bei adipösen Patienten oder tiefem Thoraxdurchmesser) nicht tasten, wird der Patient in die **Linksseitenlage** gebracht oder aufgefordert, sich aufzusetzen und den Oberkörper leicht nach vorne zu neigen[cite: 3579, 3580]. Dies bringt die Herzspitze mechanisch näher an die vordere Brustwand [cite: 3579].\n\nKlinische Bedeutung eines hebenden, verlagerten Stoßes: Ein kräftiger, verlängerter und tastbar breiterer Impuls, der zudem nach links-kaudal über die Medioklavikularlinie hinaus verlagert ist, wird als **hebender Herzspitzenstoß** klassifiziert[cite: 3580]. Er ist das klassische klinische Zeichen einer **Linksherzhypertrophie** (Muskelmassenvergrößerung des linken Ventrikels), ausgelöst durch chronisch erhöhten Nachlast-Druck wie bei einer langjährigen arteriellen Hypertonie oder einer hochgradigen Aortenklappenstenose[cite: 3580]."
+  },
+  {
+    id: "schwer-023",
+    difficulty: "schwer",
+    caseDescription:
+      "Frau P. (71 Jahre) stellt sich mit einer ausgeprägten, schmerzhaften Schwellung des gesamten rechten Beins vor. Bei der pflegerischen Inspektion stellen Sie fest, dass im Gegensatz zu einem klassischen venösen Ödem hier auch die Zehen massiv quaderförmig geschwollen sind. Zwischen den Zehengelenken zeigen sich tiefe Querfalten. Sie versuchen, eine Hautfalte über dem Mittelglied der zweiten Zehe abzuheben, was komplett fehlschlägt.",
+    question:
+      "Benennen Sie das spezifische klinische Hautphänomen, das Sie hier überprüft haben. Welche exakte klinische Diagnose liegt vor und grenzen Sie die Pathophysiologie dieses Krankheitsbildes von den Entstehungsmechanismen eines kardialen oder nephrotischen Ödems ab.",
+    modelAnswer:
+      "Klinisches Phänomen & Diagnose: Es handelt sich um ein positives **Stemmer-Zeichen** (Unfähigkeit, eine Hautfalte über den Zehenrücken abzuheben)[cite: 3477]. Die exakte Diagnose lautet **Lymphödem** der rechten unteren Extremität [cite: 3475, 3477].\n\nPathophysiologische Differenzierung:\n- Lymphödem: Ist ein eiweißreiches Exsudat, bedingt durch eine mechanische Blockade oder Schädigung der Lymphgefäße (primär kongenital oder sekundär nach OP, Tumor oder Trauma)[cite: 3476, 3480]. Da der Rücktransport der hochmolekularen Proteine blockiert ist, verbleiben diese im Interstitium, binden Wasser und führen zur fibrotischen Gewebeverhärtung (weshalb Zehen mitbetroffen sind und das Ödem derb/nicht eindrückbar ist) [cite: 3477, 3478, 3485].\n- Kardiales / Nephrotisches Ödem: Sind eiweißarme Transsudate[cite: 3480]. Ein kardiales Ödem (z. B. bei Rechtsherzinsuffizienz) entsteht durch einen erhöhten hydrostatischen Kapillardruck infolge venösen Rückstaus; ein nephrotisches Ödem entsteht durch einen verminderten kolloidosmotischen Druck im Blut infolge massiven Eiweißverlusts über die Nieren (Hypalbuminämie)[cite: 3478, 3479]. Beide Formen betreffen die Zehen nicht direkt und sind weich/eindrückbar[cite: 3477, 3482, 3485]."
+  },
+  {
+    id: "schwer-024",
+    difficulty: "schwer",
+    caseDescription:
+      "Im Rahmen der pflegerischen Aufnahme eines chronisch bettlägerigen Patienten führen Sie ein umfassendes Haut- und Gefässassessment durch. Am Fußrücken und an den Zehengelenken des linken Fußes entdecken Sie zwei kreisrunde, scharf begrenzte, tiefe Gewebedefekte (Ulzera), die mit einer harten, schwarzen Kruste (trockenes Gangrän) bedeckt sind. Die umgebende Haut ist extrem blass, glänzend, haarlos und fühlt sich eiskalt an. Ödeme oder Hautpigmentierungen liegen nicht vor.",
+    question:
+      "Ordnen Sie diese Ulzeration begründet der korrekten vaskulären Ursache zu. Welche Differenzialdiagnose wenden Sie an ( CEAP-Klassifikation vs. Fontaine-Stadien) und nennen Sie drei essenzielle pflegerische Kontraindikationen (Verbote) im Umgang mit dieser Extremität.",
+    modelAnswer:
+      "Vaskuläre Ursache & Stadium: Es handelt sich um ein **ischämisches Ulkus** infolge einer peripheren arteriellen Verschlusskrankheit (pAVK), klassifiziert als **Stadium IV nach Fontaine** (Gewebsnekrose/Gangrän) [cite: 3306, 3307, 3316].\n\nBegründung der Differenzialdiagnose: Die Lokalisation an den Zehen/Fußrücken, die fehlenden Ödeme, die eiskalte, haarlose Haut und das trockene Gangrän sind pathognomonisch für den arteriellen Sauerstoffmangel[cite: 3307, 3316]. Die *CEAP-Klassifikation* findet hier keine Anwendung, da diese ausschließlich zur Graduierung der chronisch-venösen Insuffizienz (CVI) dient (welche stattdessen durch braune Pigmentierungen, Ödeme und Ulzera an den Knöcheln charakterisiert wäre)[cite: 3331, 3397, 3400, 3401, 3403].\n\nPflegerische Kontraindikationen (Absolute Verbote):\n1. **KEINE Kompressionstherapie:** Das Anlegen von Kompressionsverbänden oder -strümpfen ist absolut kontraindiziert, da es die verbleibende, kritische arterielle Durchblutung komplett abschnüren und zur sofortigen Amputationsnotwendigkeit führen würde[cite: 3307, 3316].\n2. **KEINE Hochlagerung des Beines:** Die Extremität darf nicht hochgelagert werden, da die Schwerkraft benötigt wird, um das Blut durch die verengten Arterien in den Fuß zu leiten (Lagerung stattdessen immer tief/herabhängend)[cite: 3307, 3315].\n3. **KEINE lokale Wärmeanwendung:** Das Auflegen von Wärmflaschen oder Heizkissen ist verboten, da das ischämische Gewebe durch den erhöhten Sauerstoffbedarf bei Wärme sofort abstirbt und zudem eine schmerzmindernde Neuropathie vorliegen kann (Verbrennungsgefahr)."
+  },
+  {
+    id: "schwer-025",
+    difficulty: "schwer",
+    caseDescription:
+      "Bei einem Patienten mit Verdacht auf ein akutes lumboradikuläres Syndrom führen Sie im Rahmen des physischen Assessments die systematische Überprüfung des Patellarsehnenreflexes (PSR) und des Achillessehnenreflexes (ASR) im Seitenvergleich durch.",
+    question:
+      "Verknüpfen Sie das Reflexgeschehen funktionell mit den anatomischen Nervenwurzelebenen. Welcher Reflex testet welche spezifische Nervenwurzel, wie dokumentiert sich der pathologische Befund bei einer echten mechanischen Wurzelkompression und welche motorische Gehprobe (z. B. Fersengang) korrespondiert mit welchem neurologischen Defizit?",
+    modelAnswer:
+      "Reflex- und Wurzelzuordnung:\n- **Patellarsehnenreflex (PSR):** Korrespondiert funktionell mit der **Nervenwurzel L4**[cite: 2672, 2674]. Der Kennmuskel ist der M. quadriceps femoris [cite: 2682].\n- **Achillessehnenreflex (ASR):** Korrespondiert funktionell mit der **Nervenwurzel S1**[cite: 2672, 2688]. Der Kennmuskel ist der M. triceps surae [cite: 2700].\n\nPathologischer Befund bei Wurzelkompression: Bei einer echten mechanischen Nervenwurzelkompression (z. B. durch einen Bandscheibenvorfall) zeigt sich der entsprechende Eigenreflex im Seitenvergleich auf der betroffenen Seite **abgeschwächt (Hyporeflexie) oder komplett erloschen (Areflexie)** [cite: 2658].\n\nKorrespondierende Gehproben:\n- **Fersengang:** Ist bei einer Schädigung der **Wurzel L5** (Kennmuskel M. tibialis anterior / Fußheber) links oder rechts aufgehoben; der Fuß klatscht auf den Boden [cite: 2681, 2687].\n- **Zehenspitzenstand:** Ist bei einer Schädigung der **Wurzel S1** (Kennmuskel M. triceps surae / Plantarflexion) auf der betroffenen Seite nicht mehr möglich; der Patient kann das Körpergewicht nicht auf den Vorfuß verlagern[cite: 2697, 2700]."
+  }
+
 ];
 
 // ----------------------------------------------------------------------------
