@@ -38,10 +38,10 @@ export interface CaseGroup extends CaseDefinition {
 
 export const CASES_MAP: Record<string, string> = {
   "case-01":
-    "Frau Semame. (58 Jahre) stellt sich mit akuten, heftigen Schmerzen im unteren Rückenbereich vor, die vor allem nach der Gartenarbeit gestern aufgetreten sind. Sie nimmt eine deutliche Schonhaltung (Rumpfneigung nach links) ein. Auf Nachfrage gibt sie an, dass der Schmerz ziehend über die Vorderseite des rechten Oberschenkels bis zum Knie zieht. Sie habe das Gefühl, das rechte Bein fühle sich beim Gehen „instabil“ an und sie müsse aktiv aufpassen, nicht einzuknicken.",
+    "Frau Semame. (58 Jahre) stellt sich mit akuten, heftigen Schmerzen im unteren Rückenbereich vor, die vor allem nach der Gartenarbeit gestern aufgetreten sind. Sie nimmt eine deutliche Schonhaltung (Rumpfneigung nach links) ein. Auf Nachfrage gibt sie an, dass der Schmerz ziehend über die Vorderseite des rechten Oberschenkels bis zum Knie zieht. Sie habe das Gefühl, das rechte Bein fühle sich beim Gehen „instabil“ an und sie müsse aktiv aufpassen, nicht einzuknicken.“,
 
   "case-02":
-    "Herr Manti. (44 Jahre, Fliesenleger) kommt aufgrund seit drei Tagen zunehmender Rückenschmerzen in die Ambulanz. Die Schmerzen strahlen über die dorsolaterale Seite des linken Oberschenkels und die ventrolaterale Seite des Unterschenkels direkt bis in den Fußrücken aus. Zudem klagt er über ein pelziges Gefühl („Ameisenlaufen") im Bereich der großen Zehe. Bei der Gehprobe fällt auf, dass der linke Vorfuß beim Aufsetzen hörbar auf den Boden klatscht.",
+    "Herr Manti. (44 Jahre, Fliesenleger) kommt aufgrund seit drei Tagen zunehmender Rückenschmerzen in die Ambulanz. Die Schmerzen strahlen über die dorsolaterale Seite des linken Oberschenkels und die ventrolaterale Seite des Unterschenkels direkt bis in den Fußrücken aus. Zudem klagt er über ein pelziges Gefühl („Ameisenlaufen“) im Bereich der großen Zehe. Bei der Gehprobe fällt auf, dass der linke Vorfuß beim Aufsetzen hörbar auf den Boden klatscht.",
 
   "case-03":
     "Herr Köfte. (39 Jahre) hat vor zwei Tagen beim Versuch, eine schwere Waschmaschine zu heben, einen plötzlichen, einschießenden Schmerz im lumbosakralen Übergang verspürt. Seither leidet er unter Schmerzen, die stechend über die Rückseite (dorsal) des rechten Beins bis hin zum lateralen Fußrand ausstrahlen. Das Auftreten auf den rechten Fuß bereitet ihm extreme Probleme; er kann sich kaum auf die Zehenspitzen stellen.",
@@ -139,7 +139,7 @@ export const questions: Question[] = [
     question:
       "Formulieren Sie fünf präzise offene Fragen im Rahmen der symptomfokussierten Anamnese (subjektive Daten), um den Schmerzverlauf und mögliche neurologische Defizite differenziert zu explizieren.",
     modelAnswer:
-      "Fünf offene Fragen zur Symptompräzisierung:\n1. Lokalisation/Ausstrahlung: „Können Sie mit dem Finger den genauen Weg beschreiben, den der Schmerz von Ihrem Rücken in das rechte Bein nimmt, und wo genau er aufhört?"\n2. Qualität: „Wie fühlt sich der Schmerz im Bein an – ist er eher stechend-elektrisierend, dumpf drückend oder brennend?"\n3. Quantität: „Wenn 0 kein Schmerz ist und 10 der unerträglichste Schmerz: Wie stark ist der Schmerz aktuell im Ruhezustand und wie stark bei Bewegung?"\n4. Modifizierende Faktoren: „Gibt es bestimmte Körperpositionen, wie zum Beispiel das Hinlegen mit angewinkelten Beinen oder das Vorbeugen im Sitzen, die Ihren Schmerz merklich lindern oder verstärken?"\n5. Begleitsymptome (Neurologie): „Haben Sie neben den Schmerzen ein Taubheitsgefühl, ein Kribbeln oder ein Gefühl von 'pelziger Haut' auf der Vorderseite Ihres Oberschenkels oder Knies bemerkt?"",
+      "Fünf offene Fragen zur Symptompräzisierung:\n1. Lokalisation/Ausstrahlung: „Können Sie mit dem Finger den genauen Weg beschreiben, den der Schmerz von Ihrem Rücken in das rechte Bein nimmt, und wo genau er aufhört?“\n2. Qualität: „Wie fühlt sich der Schmerz im Bein an – ist er eher stechend-elektrisierend, dumpf drückend oder brennend?“\n3. Quantität: „Wenn 0 kein Schmerz ist und 10 der unerträglichste Schmerz: Wie stark ist der Schmerz aktuell im Ruhezustand und wie stark bei Bewegung?“\n4. Modifizierende Faktoren: „Gibt es bestimmte Körperpositionen, wie zum Beispiel das Hinlegen mit angewinkelten Beinen oder das Vorbeugen im Sitzen, die Ihren Schmerz merklich lindern oder verstärken?“\n5. Begleitsymptome (Neurologie): „Haben Sie neben den Schmerzen ein Taubheitsgefühl, ein Kribbeln oder ein Gefühl von 'pelziger Haut' auf der Vorderseite Ihres Oberschenkels oder Knies bemerkt?“",
   },
   {
     id: "case-01-q3",
@@ -175,13 +175,13 @@ export const questions: Question[] = [
     question:
       "Welches spezifische Nervenwurzelsyndrom liegt hier vor? Begründen Sie Ihre pathophysiologische Zuordnung anhand der sensiblen Dermatome und der betroffenen Muskelgruppen (Kennmuskel).",
     modelAnswer:
-      "Wurzelsyndrom: Lumboradikuläres Syndrom (LRS) der Nervenwurzel L5 links (häufig bedingt durch einen Bandscheibenvorfall im Segment LWK 4/5).\n\nPathophysiologische Begründung: Die Schmerzausstrahlung verläuft exakt entlang des linken L5-Dermatoms (Oberschenkel dorsolateral, Unterschenkel ventrolateral, Fußrücken bis zur Großzehe). Die Parästhesie („Ameisenlaufen") betrifft das sensible Versorgungsgebiet von L5 (Großzehenregion). Das auffällige Klatschen des Fußes beim Gehen beweist eine ausgeprägte Fußheberparese. Der verantwortliche Kennmuskel für die Fußextension (Dorsalextension) und die Großzehenbewegung ist der M. extensor hallucis longus (und der M. tibialis anterior, welcher funktionell überlappt), welcher durch die L5-Kompression neurologisch blockiert ist.",
+      "Wurzelsyndrom: Lumboradikuläres Syndrom (LRS) der Nervenwurzel L5 links (häufig bedingt durch einen Bandscheibenvorfall im Segment LWK 4/5).\n\nPathophysiologische Begründung: Die Schmerzausstrahlung verläuft exakt entlang des linken L5-Dermatoms (Oberschenkel dorsolateral, Unterschenkel ventrolateral, Fußrücken bis zur Großzehe). Die Parästhesie („Ameisenlaufen“) betrifft das sensible Versorgungsgebiet von L5 (Großzehenregion). Das auffällige Klatschen des Fußes beim Gehen beweist eine ausgeprägte Fußheberparese. Der verantwortliche Kennmuskel für die Fußextension (Dorsalextension) und die Großzehenbewegung ist der M. extensor hallucis longus (und der M. tibialis anterior, welcher funktionell überlappt), welcher durch die L5-Kompression neurologisch blockiert ist.",
   },
   {
     id: "case-02-q2",
     caseId: "case-02",
     question:
-      "Welche akuten Alarmzeichen („Red Flags" oder „Vital Flags") müssen bei Herrn Manti. explizit erfragt und ausgeschlossen werden, um eine notfallmäßige Operationsindikation rechtzeitig zu erkennen? Nennen Sie mindestens vier spezifische Symptome.",
+      "Welche akuten Alarmzeichen („Red Flags“ oder „Vital Flags“) müssen bei Herrn Manti. explizit erfragt und ausgeschlossen werden, um eine notfallmäßige Operationsindikation rechtzeitig zu erkennen? Nennen Sie mindestens vier spezifische Symptome.",
     modelAnswer:
       "Zur Vermeidung irreversibler Schäden müssen folgende Symptome im Akut-Assessment ausgeschlossen werden:\n1. Störungen bei Miktion oder Defäkation: Harnretention (Harnverhalt), Überlaufblase oder unwillkürlicher Stuhl-/Urinverlust (Inkontinenz) als Zeichen eines Kauda-Syndroms.\n2. Sattelanästhesie: Taubheitsgefühl im Perianal- und Genitalbereich (Reithosenanästhesie).\n3. Perakute, progrediente Lähmung: Rasch zunehmender Kraftverlust der Fußheber (vollständiger Fußheberfall), Kraftgrad < 3/5.\n4. Systemische Zeichen / Infektion: Hohes Fieber (> 38.5 °C) kombiniert mit lokalem Klopfschmerz zum Ausschluss einer Spondylodisitis oder eines epiduralen Abszesses.",
   },
@@ -276,7 +276,7 @@ export const questions: Question[] = [
     id: "case-04-q3",
     caseId: "case-04",
     question:
-      "Erklären Sie den klinischen Ablauf des „Geh- und Sprechtests" (Dual-Tasking) sowie des „5-Meter-Gehtests". Welche zeitlichen Grenzwerte weisen auf eine Gefährdung im Alltag hin?",
+      "Erklären Sie den klinischen Ablauf des „Geh- und Sprechtests“ (Dual-Tasking) sowie des „5-Meter-Gehtests“. Welche zeitlichen Grenzwerte weisen auf eine Gefährdung im Alltag hin?",
     modelAnswer:
       "Geh- und Sprechtest (Dual-Tasking): Der Pflegende geht mit der Patientin eine kurze Strecke auf dem Flur spazieren, ohne zu sprechen. Nach einigen Minuten beginnt ein normales Gespräch. Bleibt die Patientin beim Sprechen abrupt stehen (\"Stopping on talking\"), zeigt dies eine verminderte Exekutivfunktion durch kognitive Überforderung und ist ein valider Prädiktor für ein erhöhtes Sturzrisiko.\n\n5-Meter-Gehtest: Eine Strecke von exakt 5 Metern wird flach auf dem Boden markiert. Die Patientin legt diese Strecke so schnell wie möglich mit ihren gewohnten Hilfsmitteln zurück (Zeitmessung per Stoppuhr).\n\nGrenzwerte: Eine Zeit von > 3,57 Sekunden zeigt eine Gefährdung im Straßenverkehr an. Eine Zeit von > 33,3 Sekunden dokumentiert massive Alltagsschwierigkeiten und eine hochgradige Instabilität.",
   },
@@ -306,7 +306,7 @@ export const questions: Question[] = [
     question:
       "Leiten Sie aus der Situation die unmittelbare Prioritätensetzung ab. Welches spezifische klinische Triage-Schema wenden Sie an, wie ordnen Sie den spritzenden Blutverlust hierin ein und welche Differenzialdiagnose bezüglich des drohenden Schockzustandes müssen Sie antizipieren?",
     modelAnswer:
-      "Klinische Priorität: Unmittelbare, kritische Lebensgefahr durch Verbluten (Exsanguination). Das klassische ABCDE-Schema wird zum cABCDE-Schema erweitert (kleines „c" steht für Critical Bleeding). Eine arterielle Extremitätenblutung führt innert weniger Minuten zum hämorrhagischen Schock; Atemwege (A) und Belüftung (B) sind nachrangig, solange das Volumen spritzend verloren geht.\n\nAntizipierte Schockform: Hypovolämischer Schock (spezifisch: hämorrhagischer Schock), gefolgt von der tödlichen Trias der Trauma-Pathophysiologie (Hypothermie, Azidose, Koagulopathie).",
+      "Klinische Priorität: Unmittelbare, kritische Lebensgefahr durch Verbluten (Exsanguination). Das klassische ABCDE-Schema wird zum cABCDE-Schema erweitert (kleines „c“ steht für Critical Bleeding). Eine arterielle Extremitätenblutung führt innert weniger Minuten zum hämorrhagischen Schock; Atemwege (A) und Belüftung (B) sind nachrangig, solange das Volumen spritzend verloren geht.\n\nAntizipierte Schockform: Hypovolämischer Schock (spezifisch: hämorrhagischer Schock), gefolgt von der tödlichen Trias der Trauma-Pathophysiologie (Hypothermie, Azidose, Koagulopathie).",
   },
   {
     id: "case-05-q2",
@@ -314,7 +314,7 @@ export const questions: Question[] = [
     question:
       "Formulieren Sie offene Fragen, die Sie während der Akutversorgung an den Patienten oder anwesende Zeugen richten (S-Daten), um den Unfallhergang und vitale Vorinformationen (z. B. Gerinnungsstatus) im Sinne der Triage zu erfassen.",
     modelAnswer:
-      "Gezielte Kurzinformationen während der physischen Blutstillung:\n1. Unfallmechanismus (Trauma-Kinetik): „Aus welcher genauen Höhe sind Sie gefallen und sind Sie primär auf den Kopf, das Becken oder die Beine aufgeschlagen?"\n2. Gerinnungsstatus (Noxen/Medikation): „Nehmen Sie regelmäßig blutverdünnende Medikamente ein (z. B. Marcumar, Aspirin, Eliquis)?"\n3. Symptomwahrnehmung / Vigilanz: „Fühlen Sie sich schwindelig, wird Ihnen schwarz vor den Augen oder haben Sie Durst?"",
+      "Gezielte Kurzinformationen während der physischen Blutstillung:\n1. Unfallmechanismus (Trauma-Kinetik): „Aus welcher genauen Höhe sind Sie gefallen und sind Sie primär auf den Kopf, das Becken oder die Beine aufgeschlagen?“\n2. Gerinnungsstatus (Noxen/Medikation): „Nehmen Sie regelmäßig blutverdünnende Medikamente ein (z. B. Marcumar, Aspirin, Eliquis)?“\n3. Symptomwahrnehmung / Vigilanz: „Fühlen Sie sich schwindelig, wird Ihnen schwarz vor den Augen oder haben Sie Durst?“",
   },
   {
     id: "case-05-q3",
@@ -322,7 +322,7 @@ export const questions: Question[] = [
     question:
       "Beschreiben Sie das konkrete, mechanische Vorgehen zur Stillung dieser kritischen Extremitätenblutung unter Verwendung des vorlesungsspezifischen Algorithmus (Tourniquet, Wound Packing, Druckverband). Wie gehen Sie Schritt für Schritt vor und wie lagern Sie den Patienten?",
     modelAnswer:
-      "Schritt-für-Schritt-Blutstillungsalgorithmus:\n1. Manueller Druck: Sofortiger, maximaler digitaler Druck direkt auf die arterielle Verlaufsbahn oberhalb der Wunde (Druckpunkt Leiste/A. femoralis) bzw. direkt in die Wunde.\n2. Tourniquet-Anlage: Da das Blut spritzend austritt, wird sofort ein Tourniquet ca. 5–7 cm oberhalb der Wunde („high and tight") appliziert. Knebel drehen, bis die Blutung stoppt. Zeit der Anlage zwingend auf dem Tourniquet notieren!\n3. Wound Packing & Druckverband: Die Wundhöhle fest mit (hämostatischer) Gaze austamponiert (Wound Packing), gefolgt von einem rigiden Druckverband.\n4. Lagerung: Da bei einem Sturz aus 3m Höhe ein hochgradiger V.a. ein Polytrauma / eine Wirbelsäulenverletzung besteht, erfolgt eine Flachlagerung in Rückenlage (Neutralposition), Immobilisation der Halswirbelsäule (Minitrauma-Check) und Wärmeerhalt mittels Rettungsdecke zur Vermeidung der Koagulopathie.",
+      "Schritt-für-Schritt-Blutstillungsalgorithmus:\n1. Manueller Druck: Sofortiger, maximaler digitaler Druck direkt auf die arterielle Verlaufsbahn oberhalb der Wunde (Druckpunkt Leiste/A. femoralis) bzw. direkt in die Wunde.\n2. Tourniquet-Anlage: Da das Blut spritzend austritt, wird sofort ein Tourniquet ca. 5–7 cm oberhalb der Wunde („high and tight“) appliziert. Knebel drehen, bis die Blutung stoppt. Zeit der Anlage zwingend auf dem Tourniquet notieren!\n3. Wound Packing & Druckverband: Die Wundhöhle fest mit (hämostatischer) Gaze austamponiert (Wound Packing), gefolgt von einem rigiden Druckverband.\n4. Lagerung: Da bei einem Sturz aus 3m Höhe ein hochgradiger V.a. ein Polytrauma / eine Wirbelsäulenverletzung besteht, erfolgt eine Flachlagerung in Rückenlage (Neutralposition), Immobilisation der Halswirbelsäule (Minitrauma-Check) und Wärmeerhalt mittels Rettungsdecke zur Vermeidung der Koagulopathie.",
   },
   {
     id: "case-05-q4",
@@ -358,7 +358,7 @@ export const questions: Question[] = [
     question:
       "Welche gezielten anamnestischen Fremd- oder Eigenangaben (S-Daten) müssen bezüglich des Sturzereignisses erhoben werden (z. B. Amnesie, Übelkeit), um das Schädel-Hirn-Trauma genauer klassifizieren zu können?",
     modelAnswer:
-      "Erhebung primär über Rettungsdienst oder Zeugen (da Patientin desorientiert):\n- Amnesie / Bewusstlosigkeit: „Gab es direkt nach dem Aufprall eine Phase der kompletten Bewusstlosigkeit, wenn ja, wie viele Minuten dauerte diese an?"\n- Vegetative Symptome: „Hat sich die Patientin vor Ort erbrochen oder über massive Übelkeit geklagt?"\n- Unfallhergang: „Ist sie primär mit dem Kopf aufgeprallt und gab es ein direktes Monokel-/Brillenhämatom oder Flüssigkeitsaustritt (Liquorrhoe) aus Nase oder Ohren?"",
+      "Erhebung primär über Rettungsdienst oder Zeugen (da Patientin desorientiert):\n- Amnesie / Bewusstlosigkeit: „Gab es direkt nach dem Aufprall eine Phase der kompletten Bewusstlosigkeit, wenn ja, wie viele Minuten dauerte diese an?“\n- Vegetative Symptome: „Hat sich die Patientin vor Ort erbrochen oder über massive Übelkeit geklagt?“\n- Unfallhergang: „Ist sie primär mit dem Kopf aufgeprallt und gab es ein direktes Monokel-/Brillenhämatom oder Flüssigkeitsaustritt (Liquorrhoe) aus Nase oder Ohren?“",
   },
   {
     id: "case-06-q3",
@@ -392,7 +392,7 @@ export const questions: Question[] = [
     id: "case-07-q1",
     caseId: "case-07",
     question:
-      "Formulieren Sie die pflegerische Arbeitshypothese. Grenzen Sie das Krankheitsbild klinisch (morphologisch und pathophysiologisch) von einer Lymphangitis („Blutvergiftung" im Volksmund) ab.",
+      "Formulieren Sie die pflegerische Arbeitshypothese. Grenzen Sie das Krankheitsbild klinisch (morphologisch und pathophysiologisch) von einer Lymphangitis („Blutvergiftung“ im Volksmund) ab.",
     modelAnswer:
       "Arbeitshypothese: Akutes Erysipel (Wundrose) des rechten Unterschenkels. Bakterielle Infektion der tiefen Dermis (meist durch beta-hämolysierende Streptokokken der Gruppe A). Typisch sind die flammende, scharf begrenzte Rötung, Schwellung (Ödem), lokale Überwärmung sowie systemische Entzündungszeichen (Fieber, Schüttelfrost, Lymphadenopathie inguinal).\n\nAbgrenzung zur Lymphangitis: Die Lymphangitis ist eine bakterielle Entzündung der Lymphbahnen. Sie äußert sich morphologisch durch linear verlaufende, streifenförmige, unregelmäßig begrenzte rote Linien, die von der Wunde herzwärts ziehen. Ein Erysipel hingegen breitet sich flächig und scharf begrenzt im Gewebe aus.",
   },
@@ -402,7 +402,7 @@ export const questions: Question[] = [
     question:
       "Welche offenen Fragen stellen Sie Herrn Weber im Rahmen der fokussierten Hautanamnese (S-Daten), um Eintrittspforten, Risikofaktoren (z. B. pAVK, Diabetes) und den zeitlichen Verlauf exakt zu erfassen?",
     modelAnswer:
-      "1. Eintrittspforten / Barrierefunktion: „Haben Sie neben der Schramme vom Rasenmähen chronische Hautveränderungen am Fuß, wie zum Beispiel einen juckenden Hautpilz zwischen den Zehen (Tinea pedis) oder eingerissene Fersen?"\n2. Zirkulatorische Risikofaktoren: „Liegen bei Ihnen Durchblutungsstörungen der Arterien (pAVK) oder eine chronische Venenschwäche mit Krampfadern oder dicken Beinen (chronisch-venöse Insuffizienz) vor?"\n3. Metabolische Risikofaktoren: „Sind bei Ihnen Stoffwechselerkrankungen wie Diabetes mellitus bekannt und wie ist Ihre aktuelle Blutzuckereinstellung?"",
+      "1. Eintrittspforten / Barrierefunktion: „Haben Sie neben der Schramme vom Rasenmähen chronische Hautveränderungen am Fuß, wie zum Beispiel einen juckenden Hautpilz zwischen den Zehen (Tinea pedis) oder eingerissene Fersen?“\n2. Zirkulatorische Risikofaktoren: „Liegen bei Ihnen Durchblutungsstörungen der Arterien (pAVK) oder eine chronische Venenschwäche mit Krampfadern oder dicken Beinen (chronisch-venöse Insuffizienz) vor?“\n3. Metabolische Risikofaktoren: „Sind bei Ihnen Stoffwechselerkrankungen wie Diabetes mellitus bekannt und wie ist Ihre aktuelle Blutzuckereinstellung?“",
   },
   {
     id: "case-07-q3",
@@ -482,7 +482,7 @@ export const questions: Question[] = [
     question:
       "Welche klinische Verdachtshypothese müssen Sie bei dieser Läsion zwingend formulieren? Ordnen Sie die Hautveränderung begründet in das System der Primär- und Sekundäreffloreszenzen ein.",
     modelAnswer:
-      "Verdachtshypothese: Hochgradiger klinischer Verdacht auf ein Malignes Melanom (Schwarzer Hautkrebs) am oberen Rücken.\n\nEffloreszenzenlehre: Der Ausgangsbefund stellt primär eine Makula (Fleck) dar (Farbveränderung im Hautniveau ohne Substanzänderung). Da die Stelle jedoch „leicht erhaben" ist, hat sie sich sekundär zu einem Plaque oder Nodulus (Knoten) umentwickelt, was ein vertikales Tumorwachstum in die Tiefe und Breite dokumentiert.",
+      "Verdachtshypothese: Hochgradiger klinischer Verdacht auf ein Malignes Melanom (Schwarzer Hautkrebs) am oberen Rücken.\n\nEffloreszenzenlehre: Der Ausgangsbefund stellt primär eine Makula (Fleck) dar (Farbveränderung im Hautniveau ohne Substanzänderung). Da die Stelle jedoch „leicht erhaben“ ist, hat sie sich sekundär zu einem Plaque oder Nodulus (Knoten) umentwickelt, was ein vertikales Tumorwachstum in die Tiefe und Breite dokumentiert.",
   },
   {
     id: "case-09-q2",
@@ -490,15 +490,15 @@ export const questions: Question[] = [
     question:
       "Welche berufs- und umweltspezifischen Risikofaktoren (S-Daten) müssen im Anamnesegespräch mit Herrn G. explizit expliziert werden? Formulieren Sie drei offene Fragen zur Dynamik der Veränderung.",
     modelAnswer:
-      "Risikoprofil: Als Landschaftsgärtner liegt eine chronische, jahrzehntelange Ganzjahres-UV-Exposition (Sonnenstrahlung) vor, welche der primäre Karzinogenese-Faktor für DNA-Schäden der Melanozyten ist.\n\nDrei offene Fragen:\n1. Größen- und Formveränderung: „Wann genau ist Ihnen oder Ihrer Frau dieser Fleck das erste Mal aufgefallen und hat er sich in den letzten Wochen oder Monaten in seiner Größe oder Form merklich verändert?"\n2. Blutungsneigung: „Ist die Hautstelle beim Abtrocknen nach dem Duschen oder bei Reibung durch Kleidung schon einmal aufgegangen oder hat spontan geblutet?"\n3. Sensibilitätsstörungen: „Können Sie das Missempfinden genauer beschreiben – bleibt es beim gelegentlichen Jucken oder brennt die Stelle zeitweise?"",
+      "Risikoprofil: Als Landschaftsgärtner liegt eine chronische, jahrzehntelange Ganzjahres-UV-Exposition (Sonnenstrahlung) vor, welche der primäre Karzinogenese-Faktor für DNA-Schäden der Melanozyten ist.\n\nDrei offene Fragen:\n1. Größen- und Formveränderung: „Wann genau ist Ihnen oder Ihrer Frau dieser Fleck das erste Mal aufgefallen und hat er sich in den letzten Wochen oder Monaten in seiner Größe oder Form merklich verändert?“\n2. Blutungsneigung: „Ist die Hautstelle beim Abtrocknen nach dem Duschen oder bei Reibung durch Kleidung schon einmal aufgegangen oder hat spontan geblutet?“\n3. Sensibilitätsstörungen: „Können Sie das Missempfinden genauer beschreiben – bleibt es beim gelegentlichen Jucken oder brennt die Stelle zeitweise?“",
   },
   {
     id: "case-09-q3",
     caseId: "case-09",
     question:
-      "Erklären Sie die standardisierte ABCDE-Regel zur Beurteilung von melanozytären Hautveränderungen detailliert und wenden Sie jedes einzelne Kriterium direkt auf den vorliegenden Fall von Herrn G. an. Welches zusätzliche klinische Zeichen (z. B. „Ugly Duckling Sign") ziehen Sie heran?",
+      "Erklären Sie die standardisierte ABCDE-Regel zur Beurteilung von melanozytären Hautveränderungen detailliert und wenden Sie jedes einzelne Kriterium direkt auf den vorliegenden Fall von Herrn G. an. Welches zusätzliche klinische Zeichen (z. B. „Ugly Duckling Sign“) ziehen Sie heran?",
     modelAnswer:
-      "ABCDE-Regel angewandt auf den Fall:\nA – Asymmetrie: Die Läsion ist asymmetrisch (eine Hälfte gleicht nicht der anderen). Positiv.\nB – Begrenzung: Unregelmäßig, unscharf, ausgefranst. Positiv.\nC – Color (Farbe): Polychrom (hellbraun, tiefschwarz, bläuliche Anteile) – multiple Farbtöne in einer Läsion. Positiv.\nD – Durchmesser: 8 mm. Klinisch bedenklich (Grenzwert > 6 mm). Positiv.\nE – Erhabenheit / Evolution: Palpatorisch erhaben und nach Angabe des Patienten in jüngerer Zeit aufgetreten oder verändert. Positiv.\n\nUgly Duckling Sign: Alle Pigmentmale eines Menschen haben ein individuell ähnliches Erscheinungsbild. Ein Muttermal, das sich morphologisch deutlich von allen anderen abhebt (der „hässliche Entling"), ist als hochverdächtig einzustufen.",
+      "ABCDE-Regel angewandt auf den Fall:\nA – Asymmetrie: Die Läsion ist asymmetrisch (eine Hälfte gleicht nicht der anderen). Positiv.\nB – Begrenzung: Unregelmäßig, unscharf, ausgefranst. Positiv.\nC – Color (Farbe): Polychrom (hellbraun, tiefschwarz, bläuliche Anteile) – multiple Farbtöne in einer Läsion. Positiv.\nD – Durchmesser: 8 mm. Klinisch bedenklich (Grenzwert > 6 mm). Positiv.\nE – Erhabenheit / Evolution: Palpatorisch erhaben und nach Angabe des Patienten in jüngerer Zeit aufgetreten oder verändert. Positiv.\n\nUgly Duckling Sign: Alle Pigmentmale eines Menschen haben ein individuell ähnliches Erscheinungsbild. Ein Muttermal, das sich morphologisch deutlich von allen anderen abhebt (der „hässliche Entling“), ist als hochverdächtig einzustufen.",
   },
   {
     id: "case-09-q4",
@@ -540,9 +540,9 @@ export const questions: Question[] = [
     id: "case-10-q3",
     caseId: "case-10",
     question:
-      "Welche offenen Fragen im Rahmen der erweiterten Magen-Darm-Systemanamnese (S-Daten) stellen Sie Jan, um Alarmzeichen („Red Flags") eines fortgeschrittenen akuten Abdomens (z. B. Perforation) auszuschließen?",
+      "Welche offenen Fragen im Rahmen der erweiterten Magen-Darm-Systemanamnese (S-Daten) stellen Sie Jan, um Alarmzeichen („Red Flags“) eines fortgeschrittenen akuten Abdomens (z. B. Perforation) auszuschließen?",
     modelAnswer:
-      "Gezielte offene Fragen zum Ausschluss von Komplikationen:\n1. Perforationsschmerz (plötzlicher Abriss): „Haben Sie im Verlauf einen plötzlich einschießenden, extrem vernichtenden Schmerz gespürt, der kurzfristig nachließ und dann in einen dauerhaften, brennenden Ganzbauchschmerz übergegangen ist?"\n2. Darmperistaltik-Stopp: „Wann hatten Sie den letzten Stuhlgang und konnten Sie in den letzten 24 Stunden problemlos Winde abgeben?"\n3. Schock-Symptome: „Fühlen Sie sich schwindelig, zittrig oder haben Sie kalten Schweiß auf der Stirn bemerkt?"",
+      "Gezielte offene Fragen zum Ausschluss von Komplikationen:\n1. Perforationsschmerz (plötzlicher Abriss): „Haben Sie im Verlauf einen plötzlich einschießenden, extrem vernichtenden Schmerz gespürt, der kurzfristig nachließ und dann in einen dauerhaften, brennenden Ganzbauchschmerz übergegangen ist?“\n2. Darmperistaltik-Stopp: „Wann hatten Sie den letzten Stuhlgang und konnten Sie in den letzten 24 Stunden problemlos Winde abgeben?“\n3. Schock-Symptome: „Fühlen Sie sich schwindelig, zittrig oder haben Sie kalten Schweiß auf der Stirn bemerkt?“",
   },
   {
     id: "case-10-q4",
@@ -570,7 +570,7 @@ export const questions: Question[] = [
     question:
       "Welches lebensbedrohliche Krankheitsbild liegt hier vor? Differenzieren Sie pathophysiologisch und klinisch-auskultatorisch präzise zwischen einem mechanischen und einem paralytischen Verlauf basierend auf der Entstehung und den Darmgeräuschen.",
     modelAnswer:
-      "Krankheitsbild: Akuter Ileus (Darmverschluss) mit fortgeschrittenem Miserere (Koterbrechen).\n\nDifferenzierung:\n- Mechanischer Ileus: Physisches Hindernis im Darmlumen (z.B. postoperative Verwachsungen/Briden). Auskultation: Hyperperistaltik / Stenoseperistaltik. Hochgestellte, spritzende, metallisch-klingende Darmgeräusche, da die Muskulatur gegen das Hindernis ankämpft.\n- Paralytischer Ileus: Neurogene oder myogene Lähmung der Darmmotorik (häufig postoperativ-atonisch). Auskultation: Absolutes Fehlen von Darmgeräuschen („Totenstille").",
+      "Krankheitsbild: Akuter Ileus (Darmverschluss) mit fortgeschrittenem Miserere (Koterbrechen).\n\nDifferenzierung:\n- Mechanischer Ileus: Physisches Hindernis im Darmlumen (z.B. postoperative Verwachsungen/Briden). Auskultation: Hyperperistaltik / Stenoseperistaltik. Hochgestellte, spritzende, metallisch-klingende Darmgeräusche, da die Muskulatur gegen das Hindernis ankämpft.\n- Paralytischer Ileus: Neurogene oder myogene Lähmung der Darmmotorik (häufig postoperativ-atonisch). Auskultation: Absolutes Fehlen von Darmgeräuschen („Totenstille“).",
   },
   {
     id: "case-11-q2",
@@ -578,7 +578,7 @@ export const questions: Question[] = [
     question:
       "Welche spezifischen anamnestischen Fragen stellen Sie der Patientin (S-Daten) bezüglich ihrer Stuhlgewohnheiten, Medikation (z. B. Opiate) und der genauen Schmerzcharakteristik, um Hinweise auf die Genese zu erhalten?",
     modelAnswer:
-      "Gezielte offene Fragen zur Genese:\n- Schmerzcharakter: „Sind die Bauchschmerzen dauerhaft anhaltend drückend oder treten sie wellenartig-krampfartig (kolikartig) mit kurzen Pausen auf?"\n- Medikation: „Welche Schmerzmedikamente haben Sie nach der Operation erhalten – nehmen Sie stark wirkende Pflaster oder Tabletten wie Opiate (Morphium) ein?"\n- Erbrechen-Dynamik: „Können Sie beschreiben, wann das Erbrechen begonnen hat und ob die Flüssigkeit von Anfang an diese dunkle Farbe und den fäkalen Geruch hatte?"",
+      "Gezielte offene Fragen zur Genese:\n- Schmerzcharakter: „Sind die Bauchschmerzen dauerhaft anhaltend drückend oder treten sie wellenartig-krampfartig (kolikartig) mit kurzen Pausen auf?“\n- Medikation: „Welche Schmerzmedikamente haben Sie nach der Operation erhalten – nehmen Sie stark wirkende Pflaster oder Tabletten wie Opiate (Morphium) ein?“\n- Erbrechen-Dynamik: „Können Sie beschreiben, wann das Erbrechen begonnen hat und ob die Flüssigkeit von Anfang an diese dunkle Farbe und den fäkalen Geruch hatte?“",
   },
   {
     id: "case-11-q3",
@@ -620,7 +620,7 @@ export const questions: Question[] = [
     id: "case-12-q2",
     caseId: "case-12",
     question:
-      "Welche neuro-psychiatrischen Alarmzeichen („Red Flags") müssen bei Herrn D. im Anamnesegespräch gezielt geprüft werden, um eine beginnende hepatische Enzephalopathie rechtzeitig zu erkennen?",
+      "Welche neuro-psychiatrischen Alarmzeichen („Red Flags“) müssen bei Herrn D. im Anamnesegespräch gezielt geprüft werden, um eine beginnende hepatische Enzephalopathie rechtzeitig zu erkennen?",
     modelAnswer:
       "Screening auf Hepatische Enzephalopathie (HE) infolge mangelnder Ammoniak-Entgiftung:\n- Bewusstseinslage / Vigilanz: Prüfung auf ausgeprägte Verlangsamung, Schlaf-Wach-Rhythmus-Umkehr (nächtliche Unruhe, tagsüber Apathie/Somnolenz).\n- Kognition: Orientierung zu Person, Ort und Zeit testen; Schreibproben durchführen lassen.\n- Neuromuskulär: Überprüfung des Flapping Tremor (Asterixis) via Überstrecken der Hände dorsal. Ein flügelartiges Absinken bestätigt HE Stadium I-II.",
   },
@@ -628,7 +628,7 @@ export const questions: Question[] = [
     id: "case-12-q3",
     caseId: "case-12",
     question:
-      "Beschreiben Sie die objektive körperliche Untersuchung (O-Daten). Welche klassischen „Leberhautzeichen" inspizieren Sie von den Händen bis zum Gesicht, wie führen Sie die Perkussion und Lagerung zum klinischen Nachweis von freier Flüssigkeit im Abdomen (Aszites) durch und wie funktioniert die „Kratzauskultation" der Lebergrenzen?",
+      "Beschreiben Sie die objektive körperliche Untersuchung (O-Daten). Welche klassischen „Leberhautzeichen“ inspizieren Sie von den Händen bis zum Gesicht, wie führen Sie die Perkussion und Lagerung zum klinischen Nachweis von freier Flüssigkeit im Abdomen (Aszites) durch und wie funktioniert die „Kratzauskultation“ der Lebergrenzen?",
     modelAnswer:
       "Leberhautzeichen: Palmarerythem, Weißnägel, Spider-Naevi, glatte Lackzunge, Bauchglatze (Verlust der Sekundärbehaarung) und Caput medusae.\n\nAszites-Nachweis (Shifting Dullness): Mittig zeigt sich tympanitischer Klopfschall, in den Flanken gedämpfter Schenkelschall. Bei Seitenlage verlagert sich die Dämpfungsgrenze nach unten, während die Darmschlingen nach oben steigen.\n\nKratzauskultation der Leber: Stethoskop epigastrisch fixieren. Mit dem Fingernagel parallel zum Rippenbogen von kranial nach kaudal kratzen. Beim Erreichen der soliden Lebergrenze wird das Geräusch schlagartig laut (Bestimmung der Lebergröße).",
   },
@@ -674,7 +674,7 @@ export const questions: Question[] = [
     question:
       "Welche offenen Fragen zur symptomfokussierten Anamnese (S-Daten) stellen Sie Herrn Nan, um das Vorliegen von Ruheschmerzen (insbesondere nachts in horizontaler Lage) sowie das Schmerzverhalten zu explizieren?",
     modelAnswer:
-      "Offene Fragen zur Schmerzdynamik und Schlafeinfluss:\n1. Schmerz im Liegen / Schlaf: „Wachen Sie nachts im Bett auf, weil Ihre Zehen oder Ihre Fußsohle stark brennen oder schmerzen, und was tun Sie in diesem Moment, um den Schmerz zu lindern?"\n2. Modifizierende Faktoren (Schwerkraft): „Führt das Herabhängenlassen des Beines aus dem Bett oder das Aufstehen zu einer schnellen Schmerzlinderung?"\n3. Lokalisation: „Tritt der Krampf ausschließlich in der rechten Wade auf oder spüren Sie den Schmerz auch im Bereich des Gesäßes oder Oberschenkels?"",
+      "Offene Fragen zur Schmerzdynamik und Schlafeinfluss:\n1. Schmerz im Liegen / Schlaf: „Wachen Sie nachts im Bett auf, weil Ihre Zehen oder Ihre Fußsohle stark brennen oder schmerzen, und was tun Sie in diesem Moment, um den Schmerz zu lindern?“\n2. Modifizierende Faktoren (Schwerkraft): „Führt das Herabhängenlassen des Beines aus dem Bett oder das Aufstehen zu einer schnellen Schmerzlinderung?“\n3. Lokalisation: „Tritt der Krampf ausschließlich in der rechten Wade auf oder spüren Sie den Schmerz auch im Bereich des Gesäßes oder Oberschenkels?“",
   },
   {
     id: "case-13-q4",
@@ -690,7 +690,7 @@ export const questions: Question[] = [
     question:
       "Erstellen Sie die ISBAR-Meldung zur Präsentation des Patienten beim betreuenden Angiologen zwecks interventioneller Therapieplanung.",
     modelAnswer:
-      "I (Identifikation): „Guten Tag, hier spricht Rabia Sirin aus der Gefäßambulanz. Ich stelle Ihnen Herrn N., 68 Jahre, vor."\nS (Situation): „Klinischer Verdacht auf eine fortschreitende pAVK Stadium IIb der rechten unteren Extremität."\nB (Hintergrund): „Patient ist starker Nikotinabusiker. Schmerzfreie Gehstrecke beträgt aktuell unter 100 Metern."\nA (Assessment): „Objektiv: Rechter Fuß blass, kühl, haarlos, keine Ödeme. Fußpulse (A. dorsalis pedis und A. tibialis posterior) rechts im Seitenvergleich stark abgeschwächt. Ratschow-Lagerungsprobe zeigt eine reaktive Rötungsverzögerung von 22 Sekunden rechts mit ischämischem Wadenkrampf. Der berechnete Knöchel-Arm-Index (ABI) beträgt rechts 0,62 (mittelschwere pAVK)."\nR (Recommendation): „Ich empfehle die zeitnahe Durchführung einer Farbduplexsonographie oder Angiographie (DSA/MRT) zur Lokalisation der Stenose sowie die Initiierung eines strukturierten Gehtrainings und die medikamentöse Sekundärprophylaxe (Thrombozytenaggregationshemmer / Statine)."",
+      "I (Identifikation): „Guten Tag, hier spricht Rabia Sirin aus der Gefäßambulanz. Ich stelle Ihnen Herrn N., 68 Jahre, vor.“\nS (Situation): „Klinischer Verdacht auf eine fortschreitende pAVK Stadium IIb der rechten unteren Extremität.“\nB (Hintergrund): „Patient ist starker Nikotinabusiker. Schmerzfreie Gehstrecke beträgt aktuell unter 100 Metern.“\nA (Assessment): „Objektiv: Rechter Fuß blass, kühl, haarlos, keine Ödeme. Fußpulse (A. dorsalis pedis und A. tibialis posterior) rechts im Seitenvergleich stark abgeschwächt. Ratschow-Lagerungsprobe zeigt eine reaktive Rötungsverzögerung von 22 Sekunden rechts mit ischämischem Wadenkrampf. Der berechnete Knöchel-Arm-Index (ABI) beträgt rechts 0,62 (mittelschwere pAVK).“\nR (Recommendation): „Ich empfehle die zeitnahe Durchführung einer Farbduplexsonographie oder Angiographie (DSA/MRT) zur Lokalisation der Stenose sowie die Initiierung eines strukturierten Gehtrainings und die medikamentöse Sekundärprophylaxe (Thrombozytenaggregationshemmer / Statine).“",
   },
 
   // ============================================================
@@ -730,7 +730,7 @@ export const questions: Question[] = [
     question:
       "Beschreiben Sie das methodische Vorgehen bei der systematischen Herzauskultation. In welcher Reihenfolge steuern Sie die fünf klassischen Auskultationspunkte an (Leitmerksatz) und wo genau befinden sich diese anatomisch am Thorax?",
     modelAnswer:
-      "Ablauf: Start zwingend am Erb-Punkt (3. ICR links parasternal) als zentraler Referenzpunkt für eine orientierende Gesamtbeurteilung. Danach systematische Überprüfung entlang des Blutstroms mittels Leitspruch: „Anton Pulmonalis Trinkt Milch Um Viertel Nach Fünf":\n1. A = Aortenklappe: 2. Interkostalraum (ICR) rechts, direkt am Sternalrand.\n2. P = Pulmonalklappe: 2. Interkostalraum (ICR) links, direkt am Sternalrand.\n3. E = Erb-Punkt: 3. Interkostalraum (ICR) links, parasternal.\n4. T = Trikuspidalklappe: 4. Interkostalraum (ICR) rechts (oder links), am Sternalrand.\n5. M = Mitralklappe: 5. Interkostalraum (ICR) links, in der Medioklavikularlinie (MCL) auf Höhe der Herzspitze.",
+      "Ablauf: Start zwingend am Erb-Punkt (3. ICR links parasternal) als zentraler Referenzpunkt für eine orientierende Gesamtbeurteilung. Danach systematische Überprüfung entlang des Blutstroms mittels Leitspruch: „Anton Pulmonalis Trinkt Milch Um Viertel Nach Fünf“:\n1. A = Aortenklappe: 2. Interkostalraum (ICR) rechts, direkt am Sternalrand.\n2. P = Pulmonalklappe: 2. Interkostalraum (ICR) links, direkt am Sternalrand.\n3. E = Erb-Punkt: 3. Interkostalraum (ICR) links, parasternal.\n4. T = Trikuspidalklappe: 4. Interkostalraum (ICR) rechts (oder links), am Sternalrand.\n5. M = Mitralklappe: 5. Interkostalraum (ICR) links, in der Medioklavikularlinie (MCL) auf Höhe der Herzspitze.",
   },
   {
     id: "case-15-q3",
@@ -754,7 +754,7 @@ export const questions: Question[] = [
     question:
       "Verfassen Sie die strukturierte ISBAR-Übergabe für den Kardiologen zur Vereinbarung der weiteren therapeutischen Maßnahmen (z. B. Echokardiographie, Frequenzkontrolle / Antikoagulation).",
     modelAnswer:
-      "I (Identifikation): „Guten Tag, hier spricht Rabia Sirin von Station. Ich rufe wegen Frau L., 74 Jahre, an."\nS (Situation): „Die Patientin zeigt Anzeichen einer dekompensierten Aortenklappenstenose kombiniert mit einem neu aufgetretenen, tachykarden Vorhofflimmern."\nB (Hintergrund): „Vorstellung wegen zunehmender Belastungsdyspnoe und Schwindelattacken."\nA (Assessment): „Herzauskultation zeigt ein lautes, raues systolisches Geräusch im 2. ICR rechts mit Fortleitung in die Karotiden (P.m. Aortenareal). Das 12-Kanal-EKG dokumentiert eine absolute Arrhythmie der Kammern bei einer Frequenz von 115/min, Flimmerwellen und ein komplettes Fehlen von P-Wellen. Vitalzeichen: BD 135/85 mmHg, SpO2 94% bei Raumluft, Patientin ist aktuell beschwerdefrei in Ruhe."\nR (Recommendation): „Ich empfehle eine zeitnahe kardiologische Konsiliaruntersuchung inklusive transthorakaler Echokardiographie zur Graduierung der Aortenstenose. Zudem benötigen wir eine ärztliche Verordnung zur medikamentösen Frequenzkontrolle (z. B. Beta-Blocker) sowie die Initiierung einer therapeutischen Antikoagulation (Schlaganfallprophylaxe bei VHF) und die Bestimmung der Herzenzyme (Troponin) und Elektrolyte."",
+      "I (Identifikation): „Guten Tag, hier spricht Rabia Sirin von Station. Ich rufe wegen Frau L., 74 Jahre, an.“\nS (Situation): „Die Patientin zeigt Anzeichen einer dekompensierten Aortenklappenstenose kombiniert mit einem neu aufgetretenen, tachykarden Vorhofflimmern.“\nB (Hintergrund): „Vorstellung wegen zunehmender Belastungsdyspnoe und Schwindelattacken.“\nA (Assessment): „Herzauskultation zeigt ein lautes, raues systolisches Geräusch im 2. ICR rechts mit Fortleitung in die Karotiden (P.m. Aortenareal). Das 12-Kanal-EKG dokumentiert eine absolute Arrhythmie der Kammern bei einer Frequenz von 115/min, Flimmerwellen und ein komplettes Fehlen von P-Wellen. Vitalzeichen: BD 135/85 mmHg, SpO2 94% bei Raumluft, Patientin ist aktuell beschwerdefrei in Ruhe.“\nR (Recommendation): „Ich empfehle eine zeitnahe kardiologische Konsiliaruntersuchung inklusive transthorakaler Echokardiographie zur Graduierung der Aortenstenose. Zudem benötigen wir eine ärztliche Verordnung zur medikamentösen Frequenzkontrolle (z. B. Beta-Blocker) sowie die Initiierung einer therapeutischen Antikoagulation (Schlaganfallprophylaxe bei VHF) und die Bestimmung der Herzenzyme (Troponin) und Elektrolyte.“",
   },
 
   // ============================================================
