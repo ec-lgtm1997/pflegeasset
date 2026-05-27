@@ -783,6 +783,78 @@ export const hardQuestions: HardQuestion[] = [
     caseDescription: "Herr D. (55 Jahre, bekannter chronischer Alkoholabusus) wird von seinem Sohn auf die Station gebracht. Dem Sohn ist aufgefallen, dass die Augen (Skleren) und die Haut des Vaters intensiv gelb gefärbt sind. Der Patient wirkt apathisch, klagt über chronische Müdigkeit und einen stark juckenden Hautausschlag (Pruritus). Der Bauch ist massiv prall vorgewölbt, der Bauchnabel ist verstrichen und es zeigen sich geschwungene, erweiterte Venenzeichnungen um den Nabel herum. Schmerzen werden verneint. Der Stuhl sei seit Tagen hell-grau, der Urin bierbraun.",
     question: "Formulieren Sie die ISBAR-Übergabe an den Stationsarzt unter Hervorhebung der klinischen Komplikationen (Aszites, Enzephalopathie-Risiko).",
     modelAnswer: "I: \"Hallo, hier spricht Rabia Sirin von Station. Ich stelle Ihnen Herrn D., 55 Jahre, mit dekompensierter Leberzirrhose vor.\"\nS: \"Patient präsentiert sich mit ausgeprägtem schmerzlosen Ikterus, massivem Aszites und beginnenden neuro-psychiatrischen Defiziten.\"\nB: \"Chronischer Äthylismus bekannt. Akute Verschlechterung der Vigilanz (Apathie) seit heute.\"\nA: \"Objektiv: Skleren- und Hautikterus vorhanden. Abdomen prall ausladend, Shifting Dullness positiv. Caput medusae und Spider-Naevi sichtbar. Stuhl acholisch, Urin bierbraun. Neurologisch: Patient ist apathisch, verlangsamt, leichter Asterixis auslösbar (V.a. HE Stadium I).\"\nR: \"Ich empfehle die sofortige laborchemische Bestimmung des Ammoniakspiegels, der Transaminasen und des Gerinnungsstatus (INR/Quick). Pflegerisch leiten wir ein striktes Flüssigkeitsbilanzierungs-Protokoll ein. Bitte um Verordnung von Lactulose-Sirup oral zur Ammoniakelimination.\""
+  },
+
+  // ==========================================
+  // ERGÄNZUNGEN: CASE-10: Herr Nan (pAVK - Stadium IIb)
+  // ==========================================
+  {
+    id: "schwer-012-q1",
+    caseId: "case-10",
+    difficulty: "schwer",
+    caseDescription: "Herr Nan. (68 Jahre, starker Raucher, bekanntes metabolisch-vaskuläres Syndrom) berichtet, dass er beim Gehen bereits nach einer Strecke von ca. 80 bis 100 Metern gezwungen sei, stehenzubleiben, da ein unerträglicher, krampfartiger Schmerz in der rechten Wadenmuskulatur einschieße. Nach einer kurzen Pause im Stehen lasse der Schmerz nach, sodass er weitergehen könne. Bei der Inspektion der Füße fällt auf, dass die Haut rechts blass, kühl und haarlos ist; Ödeme liegen nicht vor.",
+    question: "Klassifizieren Sie die pAVK von Herrn Nan exakt nach den klinischen Stadien gemäß Fontaine. Begründen Sie Ihre Zuordnung anhand der Gehstrecke und grenzen Sie das Stadium III und IV pathophysiologisch ab.",
+    modelAnswer: "Klassifikation: Periphere arterielle Verschlusskrankheit (pAVK) der unteren Extremitäten, Stadium IIb nach Fontaine.\n\nBegründung: Stadium II definiert die 'Claudicatio intermittens' (Schaufensterkrankheit) mit belastungsabhängigem ischämischem Muskelschmerz. Die Unterteilung richtet sich nach der schmerzfreien Gehstrecke: Stadium IIa entspricht einer Gehstrecke > 200 m, Stadium IIb einer schmerzfreien Gehstrecke < 200 m (Herr Nan muss nach 80-100 m stoppen).\n\nPathophysiologische Abgrenzung:\n- Stadium III (Ruheschmerz): Der kritische Perfusionsdruck reicht selbst in Ruhe nicht mehr aus, um das Gewebe mit Sauerstoff zu versorgen; Schmerzen treten permanent auf, v. a. nachts horizontal im Liegen (Zehen/Ferse).\n- Stadium IV (Trophische Defekte): Ischämische Gewebsnekrose, Ausbildung von Ulzera oder Gangrän ('Raucherbein') durch kompletten Sauerstoffmangel."
+  },
+  {
+    id: "schwer-012-q2",
+    caseId: "case-10",
+    difficulty: "schwer",
+    caseDescription: "Herr Nan. (68 Jahre, starker Raucher, bekanntes metabolisch-vaskuläres Syndrom) berichtet, dass er beim Gehen bereits nach einer Strecke von ca. 80 bis 100 Metern gezwungen sei, stehenzubleiben, da ein unerträglicher, krampfartiger Schmerz in der rechten Wadenmuskulatur einschieße. Nach einer kurzen Pause im Stehen lasse der Schmerz nach, sodass er weitergehen könne. Bei der Inspektion der Füße fällt auf, dass die Haut rechts blass, kühl und haarlos ist; Ödeme liegen nicht vor.",
+    question: "Welche offenen Fragen zur symptomfokussierten Anamnese (S-Daten) stellen Sie Herrn Nan, um das Vorliegen von Ruheschmerzen (insbesondere nachts in horizontaler Lage) sowie das Schmerzverhalten zu explizieren?",
+    modelAnswer: "Offene Fragen zur Schmerzdynamik und Schlafeinfluss:\n1. Schmerz im Liegen / Schlaf: „Wachen Sie nachts im Bett auf, weil Ihre Zehen oder Ihre Fußsohle stark brennen oder schmerzen, und was tun Sie in diesem Moment, um den Schmerz zu lindern?“\n2. Modifizierende Faktoren (Schwerkraft): „Führt das Herabhängenlassen des Beines aus dem Bett oder das Aufstehen zu einer schnellen Schmerzlinderung?“\n3. Lokalisation: „Tritt der Krampf ausschließlich in der rechten Wade auf oder spüren Sie den Schmerz auch im Bereich des Gesäßes oder Oberschenkels?“"
+  },
+  {
+    id: "schwer-012-q4",
+    caseId: "case-10",
+    difficulty: "schwer",
+    caseDescription: "Herr Nan. (68 Jahre, starker Raucher, bekanntes metabolisch-vaskuläres Syndrom) berichtet, dass er beim Gehen bereits nach einer Strecke von ca. 80 bis 100 Metern gezwungen sei, stehenzubleiben, da ein unerträglicher, krampfartiger Schmerz in der rechten Wadenmuskulatur einschieße. Nach einer kurzen Pause im Stehen lasse der Schmerz nach, sodass er weitergehen könne. Bei der Inspektion der Füße fällt auf, dass die Haut rechts blass, kühl und haarlos ist; Ödeme liegen nicht vor.",
+    question: "Formulieren Sie zwei prioritäre, vaskulär bezogene Pflegediagnosen (NANDA) für Herrn Nan inklusive relevanter biologischer Ätiologien und Symptome.",
+    modelAnswer: "1. Unwirksame periphere Gewebedurchblutung (00204) R/T biologischem Faktor (Arteriosklerose, arterielle Lumeneinengung durch Tabakabusus) A/E/B Claudicatio intermittens bei < 100 m, Wadenkrämpfen, kühler, blasser und haarloser Haut der rechten Extremität.\n\n2. Aktivitätsintoleranz (00092) R/T Ungleichgewicht zwischen Sauerstoffangebot und -nachfrage (ischämischer Muskelschmerz bei Belastung) A/E/B Zwangsstopps (Schaufensterphänomen) nach einer Gehstrecke von 80 Metern."
+  },
+  {
+    id: "schwer-012-q5",
+    caseId: "case-10",
+    difficulty: "schwer",
+    caseDescription: "Herr Nan. (68 Jahre, starker Raucher, bekanntes metabolisch-vaskuläres Syndrom) berichtet, dass er beim Gehen bereits nach einer Strecke von ca. 80 bis 100 Metern gezwungen sei, stehenzubleiben, da ein unerträglicher, krampfartiger Schmerz in der rechten Wadenmuskulatur einschieße. Nach einer kurzen Pause im Stehen lasse der Schmerz nach, sodass er weitergehen könne. Bei der Inspektion der Füße fällt auf, dass die Haut rechts blass, kühl und haarlos ist; Ödeme liegen nicht vor.",
+    question: "Erstellen Sie die ISBAR-Meldung zur Präsentation des Patienten beim betreuenden Angiologen zwecks interventioneller Therapieplanung.",
+    modelAnswer: "I (Identifikation): „Guten Tag, hier spricht Rabia Sirin aus der Gefäßambulanz. Ich stelle Ihnen Herrn N., 68 Jahre, vor.“\nS (Situation): „Klinischer Verdacht auf eine fortschreitende pAVK Stadium IIb der rechten unteren Extremität.“\nB (Hintergrund): „Patient ist starker Nikotinabusiker. Schmerzfreie Gehstrecke beträgt aktuell unter 100 Metern.“\nA (Assessment): „Objektiv: Rechter Fuß blass, kühl, haarlos, keine Ödeme. Fußpulse (A. dorsalis pedis und A. tibialis posterior) rechts im Seitenvergleich stark abgeschwächt. Ratschow-Lagerungsprobe zeigt eine reaktive Rötungsverzögerung von 22 Sekunden rechts mit ischämischem Wadenkrampf. Der berechnete Knöchel-Arm-Index (ABI) beträgt rechts 0,62 (mittelschwere pAVK).“\nR (Recommendation): „Ich empfehle die zeitnahe Durchführung einer Farbduplexsonographie oder Angiographie (DSA/MRT) zur Lokalisation der Stenose sowie die Initiierung eines strukturierten Gehtrainings und die medikamentöse Sekundärprophylaxe (Thrombozytenaggregationshemmer / Statine).“"
+  },
+
+  // ==========================================
+  // ERGÄNZUNGEN: CASE-12: Frau Lahmacun (Herzauskultation / EKG)
+  // ==========================================
+  {
+    id: "schwer-015-q1",
+    caseId: "case-12",
+    difficulty: "schwer",
+    caseDescription: "Frau Lahmacun. (74 Jahre) stellt sich mit zunehmender Belastungsdyspnoe und gelegentlichem Schwindelgefühl vor. Im Rahmen der klinischen Untersuchung führen Sie ein Pflegeassessment des kardiovaskulären Systems durch. Bei der Herzauskultation mit dem Stethoskop hören Sie über dem 2. Interkostalraum (ICR) rechts sternal ein lautes, raues, spindelförmiges Geräusch während der Systole (Systolikum), das deutlich hörbar in die Halsschlagadern (Aa. carotides) ausstrahlt. Das zeitgleich geschriebene Ruhe-EKG zeigt eine unregelmäßige Kammerfrequenz von 115/min, das komplette Fehlen von P-Wellen und unregelmäßige, chaotische Zackenabstände (QRS-Komplexe).",
+    question: "Identifizieren und benennen Sie zwei voneinander unabhängige klinische Verdachtsdiagnosen (einen strukturellen Klappenfehler und eine elektrophysiologische Rhythmusstörung) basierend auf den Auskultations- und EKG-Befunden.",
+    modelAnswer: "1. Strukturklappenfehler: Hochgradige Aortenklappenstenose (AS). Das raue, spindelförmige Systolikum mit dem Punctum maximum über dem Aortenareal (2. ICR rechts) und der charakteristischen Fortleitung in die Karotiden ist der pathognomonische Auskultationsbefund für eine verengte Aortenklappe. Erklärt auch Belastungsdyspnoe und Schwindel (zerebrale Minderperfusion).\n\n2. Elektrophysiologische Rhythmusstörung: Tachycardes Vorhofflimmern (VHF). Das vollständige Fehlen von P-Wellen (chaotische Vorhoferregung), das Vorhandensein von feinen Flimmerwellen sowie die absolute Arrhythmie der Kammern (unregelmäßige QRS-Abstände bei 115/min) dokumentieren die klassische tachycarde Arrhythmia absoluta."
+  },
+  {
+    id: "schwer-015-q2",
+    caseId: "case-12",
+    difficulty: "schwer",
+    caseDescription: "Frau Lahmacun. (74 Jahre) stellt sich mit zunehmender Belastungsdyspnoe und gelegentlichem Schwindelgefühl vor. Im Rahmen der klinischen Untersuchung führen Sie ein Pflegeassessment des kardiovaskulären Systems durch. Bei der Herzauskultation mit dem Stethoskop hören Sie über dem 2. Interkostalraum (ICR) rechts sternal ein lautes, raues, spindelförmiges Geräusch während der Systole (Systolikum), das deutlich hörbar in die Halsschlagadern (Aa. carotides) ausstrahlt. Das zeitgleich geschriebene Ruhe-EKG zeigt eine unregelmäßige Kammerfrequenz von 115/min, das komplette Fehlen von P-Wellen und unregelmäßige, chaotische Zackenabstände (QRS-Komplexe).",
+    question: "Beschreiben Sie das methodische Vorgehen bei der systematischen Herzauskultation. In welcher Reihenfolge steuern Sie die fünf klassischen Auskultationspunkte an (Leitmerksatz) und wo genau befinden sich diese anatomisch am Thorax?",
+    modelAnswer: "Ablauf: Start zwingend am Erb-Punkt (3. ICR links parasternal) als zentraler Referenzpunkt für eine orientierende Gesamtbeurteilung. Danach systematische Überprüfung entlang des Blutstroms mittels Leitspruch: „Anton Pulmonalis Trinkt Milch Um Viertel Nach Fünf“:\n1. A = Aortenklappe: 2. Interkostalraum (ICR) rechts, direkt am Sternalrand.\n2. P = Pulmonalklappe: 2. Interkostalraum (ICR) links, direkt am Sternalrand.\n3. E = Erb-Punkt: 3. Interkostalraum (ICR) links, parasternal.\n4. T = Trikuspidalklappe: 4. Interkostalraum (ICR) rechts (oder links), am Sternalrand.\n5. M = Mitralklappe: 5. Interkostalraum (ICR) links, in der Medioklavikularlinie (MCL) auf Höhe der Herzspitze."
+  },
+  {
+    id: "schwer-015-q4",
+    caseId: "case-12",
+    difficulty: "schwer",
+    caseDescription: "Frau Lahmacun. (74 Jahre) stellt sich mit zunehmender Belastungsdyspnoe und gelegentlichem Schwindelgefühl vor. Im Rahmen der klinischen Untersuchung führen Sie ein Pflegeassessment des kardiovaskulären Systems durch. Bei der Herzauskultation mit dem Stethoskop hören Sie über dem 2. Interkostalraum (ICR) rechts sternal ein lautes, raues, spindelförmiges Geräusch während der Systole (Systolikum), das deutlich hörbar in die Halsschlagadern (Aa. carotides) ausstrahlt. Das zeitgleich geschriebene Ruhe-EKG zeigt eine unregelmäßige Kammerfrequenz von 115/min, das komplette Fehlen von P-Wellen und unregelmäßige, chaotische Zackenabstände (QRS-Komplexe).",
+    question: "Formulieren Sie zwei relevante Pflegediagnosen (NANDA) für Frau L., die das verminderte Herzzeitvolumen und die Gewebedurchblutung berücksichtigen.",
+    modelAnswer: "1. Vermindertes Herzzeitvolumen (00029) R/T veränderter Herzfrequenz / elektrophysiologischem Chaos (tachycardes Vorhofflimmern) und mechanischem Auswurfwiderstand (Aortenklappenstenose) A/E/B Belastungsdyspnoe, unregelmäßiger Kammerfrequenz von 115/min, Schwindelgefühl.\n\n2. Aktivitätsintoleranz (00092) R/T mangelnder Auswurfleistung des linken Ventrikels bei stenosierter Klappe und arrhythmiebedingter Verkürzung der Diastole (mangelnde Koronardurchblutung) A/E/B chronischer Erschöpfung, Atemnot bei geringer Belastung."
+  },
+  {
+    id: "schwer-015-q5",
+    caseId: "case-12",
+    difficulty: "schwer",
+    caseDescription: "Frau Lahmacun. (74 Jahre) stellt sich mit zunehmender Belastungsdyspnoe und gelegentlichem Schwindelgefühl vor. Im Rahmen der klinischen Untersuchung führen Sie ein Pflegeassessment des kardiovaskulären Systems durch. Bei der Herzauskultation mit dem Stethoskop hören Sie über dem 2. Interkostalraum (ICR) rechts sternal ein lautes, raues, spindelförmiges Geräusch während der Systole (Systolikum), das deutlich hörbar in die Halsschlagadern (Aa. carotides) ausstrahlt. Das zeitgleich geschriebene Ruhe-EKG zeigt eine unregelmäßige Kammerfrequenz von 115/min, das komplette Fehlen von P-Wellen und unregelmäßige, chaotische Zackenabstände (QRS-Komplexe).",
+    question: "Verfassen Sie die strukturierte ISBAR-Übergabe für den Kardiologen zur Vereinbarung der weiteren therapeutischen Maßnahmen (z. B. Echokardiographie, Frequenzkontrolle / Antikoagulation).",
+    modelAnswer: "I (Identifikation): „Guten Tag, hier spricht Rabia Sirin von Station. Ich rufe wegen Frau L., 74 Jahre, an.“\nS (Situation): „Die Patientin zeigt Anzeichen einer dekompensierten Aortenklappenstenose kombiniert mit einem neu aufgetretenen, tachycarden Vorhofflimmern.“\nB (Hintergrund): „Vorstellung wegen zunehmender Belastungsdyspnoe und Schwindelattacken.“\nA (Assessment): „Herzauskultation zeigt ein lautes, raues systolisches Geräusch im 2. ICR rechts mit Fortleitung in die Karotiden (P.m. Aortenareal). Das 12-Kanal-EKG dokumentiert eine absolute Arrhythmie der Kammern bei einer Frequenz von 115/min, Flimmerwellen und ein komplettes Fehlen von P-Wellen. Vitalzeichen: BD 135/85 mmHg, SpO2 94% bei Raumluft, Patientin ist aktuell beschwerdefrei in Ruhe.“\nR (Recommendation): „Ich empfehle eine zeitnahe kardiologische Konsiliaruntersuchung inklusive transthorakaler Echokardiographie zur Graduierung der Aortenstenose. Zudem benötigen wir eine ärztliche Verordnung zur medikamentösen Frequenzkontrolle (z. B. Beta-Blocker) sowie die Initiierung einer therapeutischen Antikoagulation (Schlaganfallprophylaxe bei VHF) und die Bestimmung der Herzenzyme (Troponin) und Elektrolyte.“"
   }
 
   
