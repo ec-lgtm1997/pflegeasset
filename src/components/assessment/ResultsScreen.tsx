@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import type { SessionResult, ExamAnswer, SelfRating } from "@/lib/assessment-types";
 import { ratingPoints, isLearningResult, aiGradeToRating } from "@/lib/assessment-types";
-import { RotateCcw, ChevronDown, Sparkles, FileText, Loader2 } from "lucide-react";
+import { RotateCcw, ChevronDown, Sparkles, FileText, Loader as Loader2 } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
