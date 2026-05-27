@@ -1,22 +1,53 @@
-import { motion } from "framer-motion";
-import type { SessionResult } from "@/lib/assessment-types";
-import { ratingPoints } from "@/lib/assessment-types";
-import { RotateCcw } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import type { SessionResult, ExamAnswer, SelfRating } from "@/lib/assessment-types";
+import { ratingPoints, isLearningResult, aiGradeToRating } from "@/lib/assessment-types";
+import { RotateCcw, ChevronDown, Sparkles, FileText, Loader2 } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { useState, useEffect } from "react";
 
 interface Props {
   results: SessionResult[];
+  mode: "learn" | "exam";
+  pendingGrades: number;
   onRestart: () => void;
 }
 
-export function ResultsScreen({ results, onRestart }: Props) {
+export function ResultsScreen({ results, mode, pendingGrades, onRestart }: Props) {
+  const [showDetails, setShowDetails] = useState(false);
   const total = results.length;
 
-  const full = results.filter((r) => r.rating === "full").length;
-  const partial = results.filter((r) => r.rating === "partial").length;
-  const none = results.filter((r) => r.rating === "none").length;
+  // Calculate statistics based on mode
+  let full = 0;
+  let partial = 0;
+  let none = 0;
 
-  const score = results.reduce((acc, r) => acc + ratingPoints(r.rating), 0);
-  const pct = total === 0 ? 0 : Math.round((score / total) * 100);
+  if (mode === "learn") {
+    full = results.filter((r) => isLearningResult(r) && r.rating === "full").length;
+    partial = results.filter((r) => isLearningResult(r) && r.rating === "partial").length;
+    none = results.filter((r) => isLearningResult(r) && r.rating === "none").length;
+  } else {
+    // Exam mode - use AI grades
+    results.forEach((r) => {
+      if (!isLearningResult(r) && r.aiResult) {
+        const rating = aiGradeToRating(r.aiResult.grade);
+        if (rating === "full") full++;
+        else if (rating === "partial") partial++;
+        else none++;
+      } else if (!isLearningResult(r) && !r.aiResult) {
+        // No AI result yet, count as pending
+        none++;
+      }
+    });
+  }
+
+  const score = full * 1 + partial * 0.5;
+  const actualTotal = results.filter((r) => !isLearningResult(r) ? r.aiResult !== null : true).length;
+  const pct = actualTotal === 0 ? 0 : Math.round((score / actualTotal) * 100);
 
   const buckets = [
     {
@@ -39,34 +70,49 @@ export function ResultsScreen({ results, onRestart }: Props) {
     },
   ];
 
-  // donut
+  // Donut chart
   const size = 220;
   const stroke = 18;
   const radius = (size - stroke) / 2;
   const circumference = 2 * Math.PI * radius;
   let offsetAcc = 0;
 
-  // Punkte als hübsche Darstellung (0,5 → ½)
   const scoreLabel = formatPoints(score);
-  const totalLabel = formatPoints(total);
+  const totalLabel = formatPoints(actualTotal);
+
+  // Auto-show details after a short delay in exam mode
+  useEffect(() => {
+    if (mode === "exam" && pendingGrades === 0) {
+      const timer = setTimeout(() => setShowDetails(true), 600);
+      return () => clearTimeout(timer);
+    }
+  }, [mode, pendingGrades]);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="mx-auto w-full max-w-2xl px-6 py-16"
+      className="mx-auto w-full max-w-3xl px-6 py-16"
     >
       <div className="text-center">
         <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground">
           <span className="h-1.5 w-1.5 rounded-full bg-success" />
-          Session abgeschlossen
+          {mode === "exam" ? "Prüfung abgeschlossen" : "Session abgeschlossen"}
         </div>
         <h1 className="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
           Auswertung
         </h1>
         <p className="mt-3 text-base text-muted-foreground">
           {total} Frage{total === 1 ? "" : "n"} bearbeitet
+          {mode === "exam" && pendingGrades > 0 && (
+            <span className="ml-2 inline-flex items-center gap-1.5">
+              <Loader2 className="h-3.5 w-3.5 animate-spin text-muted-foreground" />
+              <span className="text-xs italic">
+                {pendingGrades} Antwort{pendingGrades === 1 ? "" : "n"} werden noch ausgewertet …
+              </span>
+            </span>
+          )}
         </p>
       </div>
 
@@ -82,8 +128,8 @@ export function ResultsScreen({ results, onRestart }: Props) {
               strokeWidth={stroke}
             />
             {buckets.map((b, i) => {
-              if (b.value === 0) return null;
-              const length = (b.value / total) * circumference;
+              if (b.value === 0 || actualTotal === 0) return null;
+              const length = (b.value / actualTotal) * circumference;
               const dashArray = `${length} ${circumference - length}`;
               const dashOffset = -offsetAcc;
               offsetAcc += length;
@@ -132,7 +178,7 @@ export function ResultsScreen({ results, onRestart }: Props) {
 
         <div className="mt-10 w-full space-y-3">
           {buckets.map((b, i) => {
-            const barPct = total === 0 ? 0 : (b.value / total) * 100;
+            const barPct = actualTotal === 0 ? 0 : (b.value / actualTotal) * 100;
             return (
               <motion.div
                 key={i}
@@ -155,7 +201,7 @@ export function ResultsScreen({ results, onRestart }: Props) {
                     </span>
                   </div>
                   <div className="font-mono text-xs tabular-nums text-muted-foreground">
-                    {b.value} / {total}
+                    {b.value} / {actualTotal}
                   </div>
                 </div>
                 <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-muted">
@@ -173,6 +219,104 @@ export function ResultsScreen({ results, onRestart }: Props) {
         </div>
       </div>
 
+      {/* Detaillierte Fragenübersicht im Prüfungsmodus */}
+      {mode === "exam" && (
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="mt-12"
+        >
+          <div className="mb-4 flex items-center justify-between">
+            <h3 className="text-sm font-medium tracking-wide text-foreground">
+              Detaillierte Auswertung
+            </h3>
+            {pendingGrades > 0 && (
+              <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <Loader2 className="h-3 w-3 animate-spin" />
+                Noch {pendingGrades} Evaluierung{pendingGrades === 1 ? "" : "en"} offen
+              </span>
+            )}
+          </div>
+
+          <Accordion type="single" collapsible className="space-y-3">
+            {results
+              .filter((r): r is ExamAnswer => !isLearningResult(r))
+              .map((result, i) => (
+                <AccordionItem
+                  key={result.questionId}
+                  value={result.questionId}
+                  className="overflow-hidden rounded-xl border border-border bg-card data-[state=open]:shadow-sm"
+                >
+                  <AccordionTrigger className="px-5 py-4 hover:no-underline">
+                    <div className="flex w-full items-center justify-between gap-3 pr-4">
+                      <div className="flex items-center gap-3">
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-muted text-xs font-medium tabular-nums text-foreground">
+                          {i + 1}
+                        </span>
+                        <span className="text-left text-sm font-medium text-foreground line-clamp-1">
+                          {result.question}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        {result.aiResult ? (
+                          <AiGradeBadge grade={result.aiResult.grade} />
+                        ) : (
+                          <span className="inline-flex items-center gap-1 rounded-full border border-muted bg-muted/50 px-2.5 py-1 text-xs text-muted-foreground">
+                            <Loader2 className="h-3 w-3 animate-spin" />
+                            Auswertung
+                          </span>
+                        )}
+                        <ChevronDown className="h-4 w-4 text-muted-foreground transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                      </div>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-5 pb-5">
+                    <div className="space-y-5">
+                      {/* Nutzerantwort */}
+                      <div>
+                        <div className="mb-2 flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                          <FileText className="h-3.5 w-3.5" />
+                          Deine Antwort
+                        </div>
+                        <div className="rounded-lg border border-border bg-muted/30 p-4 text-sm leading-relaxed text-foreground">
+                          {result.userAnswer || (
+                            <span className="italic text-muted-foreground">Keine Antwort</span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* KI-Einschätzung */}
+                      {result.aiResult && (
+                        <div>
+                          <div className="mb-2 flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-primary">
+                            <Sparkles className="h-3.5 w-3.5" />
+                            KI-Einschätzung
+                          </div>
+                          <div className="rounded-lg border border-primary/30 bg-gradient-to-br from-primary/[0.06] to-primary/[0.02] p-4 text-sm leading-relaxed text-foreground">
+                            {result.aiResult.reasoning}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Musterlösung */}
+                      <div>
+                        <div className="mb-2 flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                          <FileText className="h-3.5 w-3.5" />
+                          Musterlösung
+                        </div>
+                        <div className="rounded-lg border border-border bg-card p-4 text-sm leading-relaxed text-foreground">
+                          <div className="whitespace-pre-line">{result.modelAnswer}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+          </Accordion>
+        </motion.div>
+      )}
+
       <div className="mt-12 flex justify-center">
         <motion.button
           onClick={onRestart}
@@ -188,8 +332,32 @@ export function ResultsScreen({ results, onRestart }: Props) {
   );
 }
 
+function AiGradeBadge({ grade }: { grade: "correct" | "partial" | "wrong" }) {
+  const map: Record<typeof grade, { label: string; cls: string }> = {
+    correct: {
+      label: "Richtig · 1 Pkt",
+      cls: "bg-success-soft text-foreground border-success/40",
+    },
+    partial: {
+      label: "Teilweise · 0,5 Pkt",
+      cls: "bg-warning-soft text-foreground border-warning/40",
+    },
+    wrong: {
+      label: "Falsch · 0 Pkt",
+      cls: "bg-destructive-soft text-foreground border-destructive/40",
+    },
+  };
+  const m = map[grade];
+  return (
+    <span
+      className={`inline-flex items-center rounded-full border px-2.5 py-1 font-mono text-[0.7rem] uppercase tracking-wider ${m.cls}`}
+    >
+      {m.label}
+    </span>
+  );
+}
+
 function formatPoints(n: number): string {
-  // 1.5 → "1,5"; 2 → "2"
   if (Number.isInteger(n)) return String(n);
   return n.toFixed(1).replace(".", ",");
 }

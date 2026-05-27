@@ -1,17 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   getCases,
   pickSessionByCases,
   type Question,
 } from "@/data/questions";
-import type { SelfRating, SessionResult } from "@/lib/assessment-types";
+import type { SelfRating, SessionResult, ExamAnswer, AssessmentMode } from "@/lib/assessment-types";
+import { isLearningResult } from "@/lib/assessment-types";
 import { StartScreen } from "@/components/assessment/StartScreen";
 import { ProgressBar } from "@/components/assessment/ProgressBar";
 import { OpenQuestionView } from "@/components/assessment/OpenQuestionView";
+import { ExamQuestionView } from "@/components/assessment/ExamQuestionView";
 import { ResultsScreen } from "@/components/assessment/ResultsScreen";
 import { ArrowLeft, FileText } from "lucide-react";
+import type { GradeResult } from "@/lib/grade.functions";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,10 +34,12 @@ type Phase = "start" | "session" | "results";
 
 function Index() {
   const [phase, setPhase] = useState<Phase>("start");
+  const [mode, setMode] = useState<AssessmentMode>("learn");
   const [selectedCases, setSelectedCases] = useState<Set<string>>(new Set());
   const [questions, setQuestions] = useState<Question[]>([]);
   const [index, setIndex] = useState(0);
   const [results, setResults] = useState<SessionResult[]>([]);
+  const [pendingGrades, setPendingGrades] = useState(0);
 
   const allCases = useMemo(() => getCases(), []);
   const total = questions.length;
@@ -58,6 +63,14 @@ function Index() {
     };
   }, [current, currentCase]);
 
+  // Count pending grades for exam mode
+  useEffect(() => {
+    if (phase === "results" && mode === "exam") {
+      const pending = results.filter((r) => !isLearningResult(r) && r.aiResult === null).length;
+      setPendingGrades(pending);
+    }
+  }, [phase, mode, results]);
+
   const toggleCase = (caseId: string) => {
     setSelectedCases((prev) => {
       const next = new Set(prev);
@@ -71,19 +84,48 @@ function Index() {
     setSelectedCases(new Set(allCases.map((c) => c.caseId)));
   const handleSelectNone = () => setSelectedCases(new Set());
 
-  const handleStart = () => {
+  const handleStart = (selectedMode: AssessmentMode) => {
     if (selectedCases.size === 0) return;
     const session = pickSessionByCases(Array.from(selectedCases));
     if (session.length === 0) return;
+    setMode(selectedMode);
     setQuestions(session);
     setIndex(0);
     setResults([]);
+    setPendingGrades(0);
     setPhase("session");
   };
 
+  // Lernmodus: Selbstbewertung
   const handleRate = (rating: SelfRating) => {
     const next = [...results, { kind: "open" as const, rating }];
     setResults(next);
+    if (index + 1 >= total) {
+      setTimeout(() => setPhase("results"), 180);
+    } else {
+      setIndex(index + 1);
+    }
+  };
+
+  // Prüfungsmodus: Antwort speichern
+  const handleExamSubmit = (answer: string, aiResult: GradeResult | null) => {
+    if (!current) return;
+
+    const examAnswer: ExamAnswer = {
+      questionId: current.id,
+      question: current.question,
+      userAnswer: answer,
+      modelAnswer: current.modelAnswer,
+      aiResult,
+    };
+
+    const next = [...results, examAnswer];
+    setResults(next);
+
+    if (aiResult === null) {
+      setPendingGrades((prev) => prev + 1);
+    }
+
     if (index + 1 >= total) {
       setTimeout(() => setPhase("results"), 180);
     } else {
@@ -96,6 +138,7 @@ function Index() {
     setQuestions([]);
     setIndex(0);
     setResults([]);
+    setPendingGrades(0);
   };
 
   const handleBackToStart = () => {
@@ -192,7 +235,15 @@ function Index() {
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               >
-                <OpenQuestionView question={current} onRate={handleRate} />
+                {mode === "learn" ? (
+                  <OpenQuestionView question={current} onRate={handleRate} />
+                ) : (
+                  <ExamQuestionView
+                    question={current}
+                    onSubmit={handleExamSubmit}
+                    isLast={index + 1 >= total}
+                  />
+                )}
               </motion.div>
             </AnimatePresence>
           </motion.div>
@@ -206,7 +257,12 @@ function Index() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <ResultsScreen results={results} onRestart={handleRestart} />
+            <ResultsScreen
+              results={results}
+              mode={mode}
+              pendingGrades={pendingGrades}
+              onRestart={handleRestart}
+            />
           </motion.div>
         )}
       </AnimatePresence>
